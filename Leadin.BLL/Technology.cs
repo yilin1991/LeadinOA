@@ -28,8 +28,8 @@ namespace Leadin.BLL
 	/// </summary>
 	public partial class Technology
 	{
-		private readonly ITechnology dal=DataAccess.CreateTechnology();
-		public Technology()
+		private readonly ITechnology dal= (Leadin.IDAL.ITechnology)DataAccess.CreateObject("Technology");
+        public Technology()
 		{}
 		#region  BasicMethod
 

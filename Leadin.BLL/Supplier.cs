@@ -28,8 +28,8 @@ namespace Leadin.BLL
 	/// </summary>
 	public partial class Supplier
 	{
-		private readonly ISupplier dal=DataAccess.CreateSupplier();
-		public Supplier()
+		private readonly ISupplier dal= (Leadin.IDAL.ISupplier)DataAccess.CreateObject("Supplier");
+        public Supplier()
 		{}
 		#region  BasicMethod
 

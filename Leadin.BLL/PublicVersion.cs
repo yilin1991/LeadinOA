@@ -28,8 +28,8 @@ namespace Leadin.BLL
 	/// </summary>
 	public partial class PublicVersion
 	{
-		private readonly IPublicVersion dal=DataAccess.CreatePublicVersion();
-		public PublicVersion()
+		private readonly IPublicVersion dal= (Leadin.IDAL.IPublicVersion)DataAccess.CreateObject("PublicVersion");
+        public PublicVersion()
 		{}
 		#region  BasicMethod
 

@@ -28,8 +28,8 @@ namespace Leadin.BLL
 	/// </summary>
 	public partial class OrdeDistribution
 	{
-		private readonly IOrdeDistribution dal=DataAccess.CreateOrdeDistribution();
-		public OrdeDistribution()
+		private readonly IOrdeDistribution dal= (Leadin.IDAL.IOrdeDistribution)DataAccess.CreateObject("OrdeDistribution");
+        public OrdeDistribution()
 		{}
 		#region  BasicMethod
 
