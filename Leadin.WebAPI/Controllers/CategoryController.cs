@@ -7,8 +7,11 @@ using System.Web.Http;
 using Leadin.Model;
 using Leadin.BLL;
 using LitJson;
+using System.Web.Http.Cors;
+
 namespace Leadin.WebAPI.Controllers
 {
+
     public class CategoryController : ApiController
     {
         // GET api/<controller>
@@ -23,15 +26,12 @@ namespace Leadin.WebAPI.Controllers
             return "value";
         }
 
-        // POST api/<controller>
-        public HttpResponseMessage Post([FromBody]Model.Category category)
+        [HttpPost]
+        public HttpResponseMessage AddCategory([FromBody]categorys value)
         {
             JsonData jd = new JsonData();
 
-
             BLL.Category bll = new BLL.Category();
-
-            jd["Category"] = bll.Add(category);
             jd["Success"] = "Success";
             jd["code"] = 400;
 
@@ -41,18 +41,19 @@ namespace Leadin.WebAPI.Controllers
 
         }
 
-
-
-
-
-        // PUT api/<controller>/5
         public void Put(int id, [FromBody]string value)
         {
+
         }
 
-        // DELETE api/<controller>/5
         public void Delete(int id)
         {
         }
+    }
+
+    public class categorys
+    {
+        public string Id { get; set; }
+        public string Title { get; set; }
     }
 }
