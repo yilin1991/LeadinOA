@@ -88,7 +88,24 @@
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Leadin.BLL\Leadin.BLL.csproj">
+      <Project>{d6495ace-f4dc-4707-86ea-6a45eb7d841b}</Project>
+      <Name>Leadin.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leadin.Common\Leadin.Common.csproj">
+      <Project>{cbfcecd5-54fa-4ddb-942a-2cf7d065a2ff}</Project>
+      <Name>Leadin.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leadin.DAL\Leadin.DAL.csproj">
+      <Project>{2206a70d-c9b6-47ca-be90-a2ce460da241}</Project>
+      <Name>Leadin.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leadin.Model\Leadin.Model.csproj">
+      <Project>{5db4078c-027e-464b-9b45-7da03956757d}</Project>
+      <Name>Leadin.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

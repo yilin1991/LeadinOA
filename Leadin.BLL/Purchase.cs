@@ -28,7 +28,7 @@ namespace Leadin.BLL
 	/// </summary>
 	public partial class Purchase
 	{
-		private readonly IPurchase dal= (Leadin.IDAL.IPurchase)DataAccess.CreateObject("Purchase");
+		private readonly IPurchase dal= DataAccess.CreatePurchase();
         public Purchase()
 		{}
 		#region  BasicMethod

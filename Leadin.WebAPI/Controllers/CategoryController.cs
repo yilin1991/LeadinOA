@@ -29,9 +29,9 @@ namespace Leadin.WebAPI.Controllers
             JsonData jd = new JsonData();
 
 
-            BLL.Category bll = new BLL.Category();
+            //BLL.Category bll = new BLL.Category();
 
-            jd["Category"] = bll.Add(category);
+            //jd["Category"] = bll.Add(category);
             jd["Success"] = "Success";
             jd["code"] = 400;
 

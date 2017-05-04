@@ -28,7 +28,7 @@ namespace Leadin.BLL
 	/// </summary>
 	public partial class OrdeChange
 	{
-		private readonly IOrdeChange dal= (Leadin.IDAL.IOrdeChange)DataAccess.CreateObject("OrdeChange");
+		private readonly IOrdeChange dal= DataAccess.CreateOrdeChange();
         public OrdeChange()
 		{}
 		#region  BasicMethod

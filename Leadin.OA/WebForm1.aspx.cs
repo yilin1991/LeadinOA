@@ -13,5 +13,17 @@ namespace Leadin.OA
         {
 
         }
+
+        protected void btn_Click(object sender, EventArgs e)
+        {
+
+
+            BLL.Category bll = new BLL.Category();
+
+
+            System.Data.DataSet ds = bll.GetAllList();
+
+
+        }
     }
 }

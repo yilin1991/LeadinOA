@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,11 +15,9 @@
     <link rel="stylesheet" href="~/Content/amazeui.min.css" />
     <link rel="stylesheet" href="~/Content/admin.css">
     <link rel="stylesheet" href="~/Content/app.css">
-    <script src="~/Javascripts/echarts.min.js"></script>
+    <script src="~/Scripts/echarts.min.js"></script>
 </head>
-
 <body data-type="index">
-
 
     <header class="am-topbar am-topbar-inverse admin-header">
         <div class="am-topbar-brand">
@@ -29,13 +26,9 @@
             </a>
         </div>
         <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
-
         </div>
-
         <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
-
         <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
-
             <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
                 <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                     <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
@@ -61,7 +54,7 @@
                 </li>
                 <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                     <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
-                        <span class="am-icon-comment-o"></span> 消息 <span class="am-badge tpl-badge-danger am-round">9</span></span>
+                        <span class="am-icon-comment-o"></span> 消息 <span class="am-badge tpl-badge-danger am-round">9</span>
                     </a>
                     <ul class="am-dropdown-content tpl-dropdown-content">
                         <li class="tpl-dropdown-content-external">
@@ -89,12 +82,11 @@
                                 <span class="tpl-dropdown-content-font"> 为了能最准确的传达所描述的问题， 建议你在反馈时附上演示，方便我们理解。 </span>
                             </a>
                         </li>
-
                     </ul>
                 </li>
                 <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                     <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
-                        <span class="am-icon-calendar"></span> 进度 <span class="am-badge tpl-badge-primary am-round">4</span></span>
+                        <span class="am-icon-calendar"></span> 进度 <span class="am-badge tpl-badge-primary am-round">4</span>
                     </a>
                     <ul class="am-dropdown-content tpl-dropdown-content">
                         <li class="tpl-dropdown-content-external">
@@ -133,11 +125,9 @@
                                 </span>
                             </a>
                         </li>
-
                     </ul>
                 </li>
                 <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen" class="tpl-header-list-link"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
-
                 <li class="am-dropdown" data-am-dropdown data-am-dropdown-toggle>
                     <a class="am-dropdown-toggle tpl-header-list-link" href="javascript:;">
                         <span class="tpl-header-list-user-nick">禁言小张</span><span class="tpl-header-list-user-ico"> <img src="~/img/user01.png"></span>
@@ -154,20 +144,100 @@
     </header>
 
 
+    <div class="tpl-page-container tpl-page-header-fixed">
 
+        <div class="tpl-left-nav tpl-left-nav-hover">
+            <div class="tpl-left-nav-title">
+                Amaze UI 列表
+            </div>
+            <div class="tpl-left-nav-list">
+                <ul class="tpl-left-nav-menu">
+                    <li class="tpl-left-nav-item">
+                        <a href="~/Home/Index" class="nav-link active">
+                            <i class="am-icon-home"></i>
+                            <span>首页</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="~/Category/Home/Index" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>类别管理</span>
+                            @*<i class="tpl-left-nav-content tpl-badge-danger">
+                                12
+                            </i>*@
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-table"></i>
+                            <span>表格</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu">
+                            <li>
+                                <a href="table-font-list.html">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>文字表格</span>
+                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                </a>
+                                <a href="table-images-list.html">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>图片表格</span>
+                                    <i class="tpl-left-nav-content tpl-badge-success">
+                                        18
+                                    </i>
+                                </a>
+                                <a href="form-news.html">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>消息列表</span>
+                                    <i class="tpl-left-nav-content tpl-badge-primary">
+                                        5
+                                    </i>
+                                </a>
+                                <a href="form-news-list.html">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>文字列表</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="javascript:;" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-wpforms"></i>
+                            <span>表单</span>
+                            <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right tpl-left-nav-more-ico-rotate"></i>
+                        </a>
+                        <ul class="tpl-left-nav-sub-menu" style="display: block;">
+                            <li>
+                                <a href="form-amazeui.html">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>Amaze UI 表单</span>
+                                    <i class="am-icon-star tpl-left-nav-content-ico am-fr am-margin-right"></i>
+                                </a>
+                                <a href="form-line.html">
+                                    <i class="am-icon-angle-right"></i>
+                                    <span>线条表单</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="login.html" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-key"></i>
+                            <span>登录</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        @RenderBody()
 
-    @RenderBody()
+       </div>
 
-
-   
-
-
-    <script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
-    <script src="~/Javascripts/amazeui.min.js"></script>
-    <script src="~/Javascripts/iscroll.js"></script>
-    <script src="~/Javascripts/app.js"></script>
-    @RenderSection("scripts", required: false)
-
+        <script src="http://www.jq22.com/jquery/jquery-2.1.1.js"></script>
+        <script src="~/Scripts/amazeui.min.js"></script>
+        <script src="~/Scripts/iscroll.js"></script>
+        <script src="~/Scripts/app.js"></script>
+        @RenderSection("scripts", required: false)
 </body>
-
 </html>

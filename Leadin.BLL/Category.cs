@@ -28,7 +28,7 @@ namespace Leadin.BLL
 	/// </summary>
 	public partial class Category
 	{
-		private readonly ICategory dal=(Leadin.IDAL.ICategory)DataAccess.CreateObject("Category");
+		private readonly ICategory dal=DataAccess.CreateCategory();
 		public Category()
 		{}
 		#region  BasicMethod

@@ -28,7 +28,7 @@ namespace Leadin.BLL
 	/// </summary>
 	public partial class Paper
 	{
-		private readonly IPaper dal= (Leadin.IDAL.IPaper)DataAccess.CreateObject("Paper");
+		private readonly IPaper dal= DataAccess.CreatePaper();
         public Paper()
 		{}
 		#region  BasicMethod

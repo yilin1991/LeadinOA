@@ -20,7 +20,7 @@ using System.Text;
 using System.Data.SqlClient;
 using Leadin.IDAL;
 using Maticsoft.DBUtility;//Please add references
-namespace Leadin.SQLServerDAL
+namespace Leadin.DAL
 {
 	/// <summary>
 	/// 数据访问类:CustomerAddress

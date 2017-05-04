@@ -28,7 +28,7 @@ namespace Leadin.BLL
 	/// </summary>
 	public partial class Customer
 	{
-		private readonly ICustomer dal= (Leadin.IDAL.ICustomer)DataAccess.CreateObject("Customer");
+		private readonly ICustomer dal= DataAccess.CreateCustomer();
         public Customer()
 		{}
 		#region  BasicMethod

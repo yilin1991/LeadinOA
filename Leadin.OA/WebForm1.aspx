@@ -11,6 +11,7 @@
     <form id="form1" runat="server">
         <div>
             <input type="button" id="Button1"  value="提交"/>
+            <asp:Button runat="server" ID="btn" Text="121" OnClick="btn_Click" />
         </div>
     </form>
     <script src="js/jquery-1.11.1.min.js"></script>
@@ -34,7 +35,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "http://192.168.1.115:8022/api/Category",
+                    url: "http://192.168.1.115:8022/api/Category/Post",
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
                     data: JSON.stringify(obj),

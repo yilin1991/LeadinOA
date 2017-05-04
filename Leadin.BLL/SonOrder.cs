@@ -28,7 +28,7 @@ namespace Leadin.BLL
 	/// </summary>
 	public partial class SonOrder
 	{
-		private readonly ISonOrder dal= (Leadin.IDAL.ISonOrder)DataAccess.CreateObject("SonOrder");
+		private readonly ISonOrder dal= DataAccess.CreateSonOrder();
         public SonOrder()
 		{}
 		#region  BasicMethod

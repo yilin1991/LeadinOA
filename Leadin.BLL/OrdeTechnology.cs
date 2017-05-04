@@ -28,7 +28,7 @@ namespace Leadin.BLL
 	/// </summary>
 	public partial class OrdeTechnology
 	{
-		private readonly IOrdeTechnology dal= (Leadin.IDAL.IOrdeTechnology)DataAccess.CreateObject("OrdeTechnology");
+		private readonly IOrdeTechnology dal= DataAccess.CreateOrdeTechnology();
         public OrdeTechnology()
 		{}
 		#region  BasicMethod

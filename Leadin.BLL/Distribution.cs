@@ -28,7 +28,7 @@ namespace Leadin.BLL
 	/// </summary>
 	public partial class Distribution
 	{
-		private readonly IDistribution dal= (Leadin.IDAL.IDistribution)DataAccess.CreateObject("Distribution");
+		private readonly IDistribution dal= DataAccess.CreateDistribution();
         public Distribution()
 		{}
 		#region  BasicMethod

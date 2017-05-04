@@ -28,7 +28,7 @@ namespace Leadin.BLL
 	/// </summary>
 	public partial class Workers
 	{
-		private readonly IWorkers dal= (Leadin.IDAL.IWorkers)DataAccess.CreateObject("Workers");
+		private readonly IWorkers dal= DataAccess.CreateWorkers();
         public Workers()
 		{}
 		#region  BasicMethod
