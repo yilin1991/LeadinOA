@@ -11,6 +11,9 @@ namespace Leadin.WebAPI.Controllers
 {
     public class CategoryController : ApiController
     {
+        BLL.Category bll = new BLL.Category();
+
+
         // GET api/<controller>
         public IEnumerable<string> Get()
         {
@@ -22,6 +25,18 @@ namespace Leadin.WebAPI.Controllers
         {
             return "value";
         }
+
+        
+        public HttpResponseMessage GetCategoryList()
+        {
+            //JsonData jd = new JsonData(bll.GetModelList(""));
+
+            string tojson = JsonMapper.ToJson(bll.GetModelList(""));
+
+            return new HttpResponseMessage { Content = new StringContent(tojson) };
+
+        }
+
 
         // POST api/<controller>
         public HttpResponseMessage Post([FromBody]Model.Category category)

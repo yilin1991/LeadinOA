@@ -19,8 +19,7 @@
 </head>
 
 <body data-type="login">
-
-    @Html.AntiForgeryToken()
+   
     <div class="am-g myapp-login">
         <div class="myapp-login-logo-block  tpl-login-max">
             <div class="myapp-login-logo-text">
@@ -34,7 +33,7 @@
             <div class="am-u-sm-10 login-am-center">
                 @using (Ajax.BeginForm("Login", "", new AjaxOptions() { OnSuccess = "Show" }, new { @class = "am-form" }))
                 {
-
+                    @Html.AntiForgeryToken()
                     <fieldset>
                         <div class="am-form-group">
                              @Html.TextBoxFor(model=>model.account,new { @placeholder= "输入帐号",@id= "doc-ipt-email-1" })
@@ -53,7 +52,6 @@
     <script src="~/Scripts/amazeui.min.js"></script>
     <script src="~/Scripts/app.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    @*<script src="~/Scripts/jquery.hDialog.min.js"></script>*@
     <script src="~/Scripts/jquery.hDialog.js"></script>
     <script>
 

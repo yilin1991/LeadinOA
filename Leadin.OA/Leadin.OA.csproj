@@ -43,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LitJSON, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\LitJSON.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -65,7 +69,60 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\admin.css" />
+    <Content Include="css\amazeui.min.css" />
+    <Content Include="css\app.css" />
+    <Content Include="img\32.jpg" />
+    <Content Include="img\43.jpg" />
+    <Content Include="img\a1.png" />
+    <Content Include="img\a10.png" />
+    <Content Include="img\a2.png" />
+    <Content Include="img\a3.png" />
+    <Content Include="img\a4.png" />
+    <Content Include="img\a5.png" />
+    <Content Include="img\a6.png" />
+    <Content Include="img\a7.png" />
+    <Content Include="img\a8.png" />
+    <Content Include="img\a9.png" />
+    <Content Include="img\lbbg.png" />
+    <Content Include="img\logo.png" />
+    <Content Include="img\syncfusion-icons-white.png" />
+    <Content Include="img\user01.png" />
+    <Content Include="img\user02.png" />
+    <Content Include="img\user03.png" />
+    <Content Include="img\user04.png" />
+    <Content Include="img\user05.png" />
+    <Content Include="img\user06.png" />
+    <Content Include="img\user07.png" />
+    <Content Include="i\app-icon72x72%402x.png" />
+    <Content Include="i\examples\admin-chrome.png" />
+    <Content Include="i\examples\admin-firefox.png" />
+    <Content Include="i\examples\admin-ie.png" />
+    <Content Include="i\examples\admin-opera.png" />
+    <Content Include="i\examples\admin-safari.png" />
+    <Content Include="i\examples\adminPage.png" />
+    <Content Include="i\examples\blogPage.png" />
+    <Content Include="i\examples\landing.png" />
+    <Content Include="i\examples\landingPage.png" />
+    <Content Include="i\examples\loginPage.png" />
+    <Content Include="i\examples\sidebarPage.png" />
+    <Content Include="i\favicon.png" />
+    <Content Include="i\startup-640x1096.png" />
+    <Content Include="js\amazeui.min.js" />
+    <Content Include="js\app.js" />
+    <Content Include="js\echarts.min.js" />
+    <Content Include="js\iscroll.js" />
+    <Content Include="js\jquery.hDialog.js" />
+    <Content Include="js\jquery.hDialog.min.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\Validform_v5.3.2.js" />
+    <Content Include="Login.aspx" />
     <Content Include="packages.config" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -76,17 +133,16 @@
   <ItemGroup>
     <Content Include="js\jquery-1.11.1.min.js" />
     <Content Include="Web.config" />
-    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Leadin.BLL\Leadin.BLL.csproj">
@@ -104,6 +160,10 @@
     <ProjectReference Include="..\Leadin.Model\Leadin.Model.csproj">
       <Project>{5db4078c-027e-464b-9b45-7da03956757d}</Project>
       <Name>Leadin.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leadin.Web.UI\Leadin.Web.UI.csproj">
+      <Project>{3a3dccfb-2f2f-4754-8669-edffaddccfca}</Project>
+      <Name>Leadin.Web.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

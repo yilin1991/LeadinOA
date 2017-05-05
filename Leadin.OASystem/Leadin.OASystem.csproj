@@ -165,6 +165,7 @@
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Areas\Category\Views\web.config" />
     <Content Include="Areas\Category\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Category\Views\Home\Add.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -195,6 +196,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Categorys.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -222,6 +224,10 @@
     <ProjectReference Include="..\Leadin.Common\Leadin.Common.csproj">
       <Project>{cbfcecd5-54fa-4ddb-942a-2cf7d065a2ff}</Project>
       <Name>Leadin.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Leadin.Model\Leadin.Model.csproj">
+      <Project>{5db4078c-027e-464b-9b45-7da03956757d}</Project>
+      <Name>Leadin.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
