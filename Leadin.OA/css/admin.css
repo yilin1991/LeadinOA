@@ -312,7 +312,7 @@ ul {
 */
 
 .table-main {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   padding: .5rem;
 }
 
@@ -321,7 +321,7 @@ ul {
 }
 
 .table-check {
-  width: 30px;
+  width: 50px;
 }
 
 .table-id {

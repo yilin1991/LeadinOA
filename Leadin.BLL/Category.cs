@@ -21,6 +21,8 @@ using Leadin.Common;
 using Leadin.Model;
 using Leadin.DALFactory;
 using Leadin.IDAL;
+using System.Text;
+
 namespace Leadin.BLL
 {
 	/// <summary>
@@ -157,18 +159,54 @@ namespace Leadin.BLL
 		{
 			return dal.GetListByPage( strWhere,  orderby,  startIndex,  endIndex);
 		}
-		/// <summary>
-		/// 分页获取数据列表
-		/// </summary>
-		//public DataSet GetList(int PageSize,int PageIndex,string strWhere)
-		//{
-			//return dal.GetList(PageSize,PageIndex,strWhere);
-		//}
+        /// <summary>
+        /// 分页获取数据列表
+        /// </summary>
+        //public DataSet GetList(int PageSize,int PageIndex,string strWhere)
+        //{
+        //return dal.GetList(PageSize,PageIndex,strWhere);
+        //}
 
-		#endregion  BasicMethod
-		#region  ExtensionMethod
+        #endregion  BasicMethod
+        #region  ExtensionMethod
 
-		#endregion  ExtensionMethod
-	}
+        /// <summary>
+        /// 获取类别编号
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public string SetNumID()
+        {
+            StringBuilder strNumId = new StringBuilder("OA");
+            strNumId.Append(DateTime.Now.ToString("yyMMdd"));
+
+            Model.Category model = GetModel(GetMaxId());
+            if (model != null)
+            {
+                strNumId.Append((int.Parse(model.NumId.Substring(model.NumId.Length - 4)) + 1).ToString().PadLeft(3,'0'));
+            }
+            else
+            {
+                strNumId.Append("001");
+            }
+
+            return strNumId.ToString();
+
+        }
+
+        /// <summary>
+        /// 获取所有类别
+        /// </summary>
+        /// <param name="PId"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public DataTable GetListChild(int PId, bool state)
+        {
+            return dal.GetListChild(PId, state);
+        }
+
+
+        #endregion  ExtensionMethod
+    }
 }
 

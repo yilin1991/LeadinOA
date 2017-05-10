@@ -116,8 +116,19 @@ namespace Leadin.Model
 			set{ _addtime=value;}
 			get{return _addtime;}
 		}
-		#endregion Model
 
-	}
+        /// <summary>
+        /// 
+        /// </summary>
+        public int LevelNum { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string LinkUrl { get; set; }
+
+        #endregion Model
+
+    }
 }
 

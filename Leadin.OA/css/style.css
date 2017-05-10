@@ -1,0 +1,24 @@
+﻿.am-table thead tr th {
+    padding-bottom: 1.5rem;
+}
+
+.table-main {
+    font-size: 1.2rem;
+}
+
+.am-table > tbody > tr > td, .am-table > tbody > tr > th, .am-table > tfoot > tr > td, .am-table > tfoot > tr > th, .am-table > thead > tr > td, .am-table > thead > tr > th {
+    padding: 1rem;
+    text-align: center;
+}
+
+.table-id {
+    width: 60px;
+}
+
+.table-numid {
+    width: 160px;
+}
+
+.am-table > thead > tr > th.table-set {
+    text-align: left;
+}

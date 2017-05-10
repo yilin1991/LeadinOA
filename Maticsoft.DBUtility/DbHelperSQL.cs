@@ -37,7 +37,7 @@ namespace Maticsoft.DBUtility
         }
         public static int GetMaxID(string FieldName, string TableName)
         {
-            string strsql = "select max(" + FieldName + ")+1 from " + TableName;
+            string strsql = "select max(" + FieldName + ") from " + TableName;
             object obj = DbHelperSQL.GetSingle(strsql);
             if (obj == null)
             {

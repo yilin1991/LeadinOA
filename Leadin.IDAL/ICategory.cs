@@ -60,13 +60,16 @@ namespace Leadin.IDAL
 		DataSet GetList(int Top,string strWhere,string filedOrder);
 		int GetRecordCount(string strWhere);
 		DataSet GetListByPage(string strWhere, string orderby, int startIndex, int endIndex);
-		/// <summary>
-		/// 根据分页获得数据列表
-		/// </summary>
-		//DataSet GetList(int PageSize,int PageIndex,string strWhere);
-		#endregion  成员方法
-		#region  MethodEx
 
-		#endregion  MethodEx
-	} 
+        DataTable GetListChild(int PId, bool state);
+
+        /// <summary>
+        /// 根据分页获得数据列表
+        /// </summary>
+        //DataSet GetList(int PageSize,int PageIndex,string strWhere);
+        #endregion  成员方法
+        #region  MethodEx
+
+        #endregion  MethodEx
+    } 
 }

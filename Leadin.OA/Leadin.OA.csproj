@@ -15,7 +15,7 @@
     <RootNamespace>Leadin.OA</RootNamespace>
     <AssemblyName>Leadin.OA</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -69,9 +69,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Controls\footerlink.ascx" />
+    <Content Include="Controls\Header.ascx" />
+    <Content Include="Controls\headerlink.ascx" />
+    <Content Include="Controls\Left.ascx" />
     <Content Include="css\admin.css" />
     <Content Include="css\amazeui.min.css" />
     <Content Include="css\app.css" />
+    <Content Include="css\style.css" />
     <Content Include="img\32.jpg" />
     <Content Include="img\43.jpg" />
     <Content Include="img\a1.png" />
@@ -94,6 +99,7 @@
     <Content Include="img\user05.png" />
     <Content Include="img\user06.png" />
     <Content Include="img\user07.png" />
+    <Content Include="Index.aspx" />
     <Content Include="i\app-icon72x72%402x.png" />
     <Content Include="i\examples\admin-chrome.png" />
     <Content Include="i\examples\admin-firefox.png" />
@@ -117,6 +123,8 @@
     <Content Include="js\jquery.min.js" />
     <Content Include="js\Validform_v5.3.2.js" />
     <Content Include="Login.aspx" />
+    <Content Include="oasystem\oacategory\edit.aspx" />
+    <Content Include="oasystem\oacategory\index.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
@@ -135,12 +143,61 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\footerlink.ascx.cs">
+      <DependentUpon>footerlink.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\footerlink.ascx.designer.cs">
+      <DependentUpon>footerlink.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Header.ascx.cs">
+      <DependentUpon>Header.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Header.ascx.designer.cs">
+      <DependentUpon>Header.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\headerlink.ascx.cs">
+      <DependentUpon>headerlink.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\headerlink.ascx.designer.cs">
+      <DependentUpon>headerlink.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Left.ascx.cs">
+      <DependentUpon>Left.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Left.ascx.designer.cs">
+      <DependentUpon>Left.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="oasystem\oacategory\edit.aspx.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oasystem\oacategory\edit.aspx.designer.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="oasystem\oacategory\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oasystem\oacategory\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -181,7 +238,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>58299</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:58286/</IISUrl>
+          <IISUrl>http://192.168.1.115:8023</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
