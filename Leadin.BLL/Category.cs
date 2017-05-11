@@ -183,7 +183,7 @@ namespace Leadin.BLL
             Model.Category model = GetModel(GetMaxId());
             if (model != null)
             {
-                strNumId.Append((int.Parse(model.NumId.Substring(model.NumId.Length - 4)) + 1).ToString().PadLeft(3,'0'));
+                strNumId.Append((int.Parse(model.NumId.Substring(model.NumId.Length - 3)) + 1).ToString().PadLeft(3,'0'));
             }
             else
             {

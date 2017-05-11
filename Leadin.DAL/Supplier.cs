@@ -68,7 +68,7 @@ namespace Leadin.DAL
 			strSql.Append("@NumId,@CompanyName,@TypeId,@NameInfo,@Phone,@Tel,@Email,@WeChat,@QQNum,@Addressinfo,@Explain,@StateInfo,@SortNum,@Remark,@AddTime)");
 			strSql.Append(";select @@IDENTITY");
 			SqlParameter[] parameters = {
-					new SqlParameter("@NumId", SqlDbType.NVarChar,1),
+					new SqlParameter("@NumId", SqlDbType.NVarChar,100),
 					new SqlParameter("@CompanyName", SqlDbType.NVarChar,200),
 					new SqlParameter("@TypeId", SqlDbType.Int,4),
 					new SqlParameter("@NameInfo", SqlDbType.NVarChar,200),
@@ -133,7 +133,7 @@ namespace Leadin.DAL
 			strSql.Append("AddTime=@AddTime");
 			strSql.Append(" where Id=@Id");
 			SqlParameter[] parameters = {
-					new SqlParameter("@NumId", SqlDbType.NVarChar,1),
+					new SqlParameter("@NumId", SqlDbType.NVarChar,100),
 					new SqlParameter("@CompanyName", SqlDbType.NVarChar,200),
 					new SqlParameter("@TypeId", SqlDbType.Int,4),
 					new SqlParameter("@NameInfo", SqlDbType.NVarChar,200),

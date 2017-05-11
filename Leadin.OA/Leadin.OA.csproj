@@ -125,12 +125,22 @@
     <Content Include="Login.aspx" />
     <Content Include="oasystem\oacategory\edit.aspx" />
     <Content Include="oasystem\oacategory\index.aspx" />
+    <Content Include="oasystem\oacustomer\edit.aspx" />
+    <Content Include="oasystem\oacustomer\index.aspx" />
+    <Content Include="oasystem\oapaper\edit.aspx" />
+    <Content Include="oasystem\oapaper\index.aspx" />
+    <Content Include="oasystem\oasupplier\edit.aspx" />
+    <Content Include="oasystem\oasupplier\index.aspx" />
+    <Content Include="oasystem\oaworkers\edit.aspx" />
+    <Content Include="oasystem\oaworkers\index.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Tools\CheckAccount.ashx" />
+    <Content Include="Tools\CheckPaperNumId.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -199,7 +209,69 @@
     <Compile Include="oasystem\oacategory\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="oasystem\oacustomer\edit.aspx.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oasystem\oacustomer\edit.aspx.designer.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="oasystem\oacustomer\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oasystem\oacustomer\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="oasystem\oapaper\edit.aspx.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oasystem\oapaper\edit.aspx.designer.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="oasystem\oapaper\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oasystem\oapaper\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="oasystem\oasupplier\edit.aspx.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oasystem\oasupplier\edit.aspx.designer.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="oasystem\oasupplier\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oasystem\oasupplier\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="oasystem\oaworkers\edit.aspx.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oasystem\oaworkers\edit.aspx.designer.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="oasystem\oaworkers\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oasystem\oaworkers\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\CheckAccount.ashx.cs">
+      <DependentUpon>CheckAccount.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\CheckPaperNumId.ashx.cs">
+      <DependentUpon>CheckPaperNumId.ashx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Leadin.BLL\Leadin.BLL.csproj">
