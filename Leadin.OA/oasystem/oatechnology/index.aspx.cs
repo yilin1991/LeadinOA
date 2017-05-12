@@ -5,13 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Leadin.OA.oasystem.oacustomer
+namespace Leadin.OA.oasystem.oatechnology
 {
     public partial class index : Leadin.Web.UI.ManagePage
     {
-
-        BLL.Customer bll = new BLL.Customer();
-        Model.Customer model = new Model.Customer();
+        BLL.Technology bll = new BLL.Technology();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,39 +21,12 @@ namespace Leadin.OA.oasystem.oacustomer
 
 
         /// <summary>
-        /// 绑定客户列表
+        /// 绑定工艺列表
         /// </summary>
         void BindRepList()
         {
-            repList.DataSource = bll.GetList(0, "", "AddTime asc");
+            repList.DataSource = bll.GetList(0, "", "SortNum desc,AddTime asc");
             repList.DataBind();
-        }
-
-
-        /// <summary>
-        /// 获取所属公司名称
-        /// </summary>
-        /// <param name="pid"></param>
-        /// <returns></returns>
-        public string GetPartentCompany(int pid)
-        {
-            if (string.Equals(pid, 0))
-            {
-                return "直接客户";
-            }
-            else
-            {
-                model = bll.GetModel(pid);
-
-                if (model != null)
-                {
-                    return model.CompanyName;
-                }
-                else
-                {
-                    return "未找到所属公司";
-                }
-            }
         }
 
 
@@ -68,5 +39,36 @@ namespace Leadin.OA.oasystem.oacustomer
         {
             Response.Redirect("edit.aspx");
         }
+
+
+
+        /// <summary>
+        /// 绑定所属工艺
+        /// </summary>
+        /// <param name="pid"></param>
+        /// <returns></returns>
+        public string GetParentName(int pid)
+        {
+            if (string.Equals(pid, 0))
+            {
+                return "顶级工艺";
+            }
+            else
+            {
+                Model.Technology model = bll.GetModel(pid);
+
+                if (model != null)
+                {
+                    return model.NameInfo;
+                }
+                else
+                {
+                    return "未找到所属工艺";
+                }
+
+            }
+        }
+
+
     }
 }

@@ -7,10 +7,10 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace Leadin.OA.oasystem.oacustomer {
+namespace Leadin.OA.oasystem.oatechnology {
     
     
-    public partial class index {
+    public partial class edit {
         
         /// <summary>
         /// headerlink 控件。
@@ -49,40 +49,67 @@ namespace Leadin.OA.oasystem.oacustomer {
         protected global::Leadin.OA.Controls.Left Left;
         
         /// <summary>
-        /// lbtnAdd 控件。
+        /// txtTitle 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnAdd;
+        protected global::System.Web.UI.WebControls.TextBox txtTitle;
         
         /// <summary>
-        /// lbtnDel 控件。
+        /// ddlTechnology 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnDel;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTechnology;
         
         /// <summary>
-        /// btnSearch 控件。
+        /// txtPrice 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnSearch;
+        protected global::System.Web.UI.WebControls.TextBox txtPrice;
         
         /// <summary>
-        /// repList 控件。
+        /// txtSortNum 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repList;
+        protected global::System.Web.UI.WebControls.TextBox txtSortNum;
+        
+        /// <summary>
+        /// txtRemark 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRemark;
+        
+        /// <summary>
+        /// ckState 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox ckState;
+        
+        /// <summary>
+        /// btnOK 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnOK;
         
         /// <summary>
         /// footerlink 控件。

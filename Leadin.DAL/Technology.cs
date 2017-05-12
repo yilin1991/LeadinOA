@@ -63,9 +63,9 @@ namespace Leadin.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into tb_Technology(");
-			strSql.Append("NumId,NameInfo,ParentId,Price,StateInfo,SortNum,Remark,AddTime)");
+			strSql.Append("NumId,NameInfo,ParentId,Price,StateInfo,SortNum,Remark,AddTime,TemPrice)");
 			strSql.Append(" values (");
-			strSql.Append("@NumId,@NameInfo,@ParentId,@Price,@StateInfo,@SortNum,@Remark,@AddTime)");
+			strSql.Append("@NumId,@NameInfo,@ParentId,@Price,@StateInfo,@SortNum,@Remark,@AddTime,@TemPrice)");
 			strSql.Append(";select @@IDENTITY");
 			SqlParameter[] parameters = {
 					new SqlParameter("@NumId", SqlDbType.NVarChar,100),
@@ -75,7 +75,7 @@ namespace Leadin.DAL
 					new SqlParameter("@StateInfo", SqlDbType.Int,4),
 					new SqlParameter("@SortNum", SqlDbType.Int,4),
 					new SqlParameter("@Remark", SqlDbType.NText),
-					new SqlParameter("@AddTime", SqlDbType.DateTime)};
+					new SqlParameter("@AddTime", SqlDbType.DateTime),new SqlParameter("@TemPrice",SqlDbType.Decimal,9)};
 			parameters[0].Value = model.NumId;
 			parameters[1].Value = model.NameInfo;
 			parameters[2].Value = model.ParentId;
@@ -84,7 +84,7 @@ namespace Leadin.DAL
 			parameters[5].Value = model.SortNum;
 			parameters[6].Value = model.Remark;
 			parameters[7].Value = model.AddTime;
-
+            parameters[8].Value = model.TemPrice;
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);
 			if (obj == null)
 			{
@@ -109,7 +109,7 @@ namespace Leadin.DAL
 			strSql.Append("StateInfo=@StateInfo,");
 			strSql.Append("SortNum=@SortNum,");
 			strSql.Append("Remark=@Remark,");
-			strSql.Append("AddTime=@AddTime");
+			strSql.Append("AddTime=@AddTime,TemPrice=@TemPrice");
 			strSql.Append(" where Id=@Id");
 			SqlParameter[] parameters = {
 					new SqlParameter("@NumId", SqlDbType.NVarChar,100),
@@ -120,6 +120,7 @@ namespace Leadin.DAL
 					new SqlParameter("@SortNum", SqlDbType.Int,4),
 					new SqlParameter("@Remark", SqlDbType.NText),
 					new SqlParameter("@AddTime", SqlDbType.DateTime),
+                    new SqlParameter("@TemPrice",SqlDbType.Decimal,9),
 					new SqlParameter("@Id", SqlDbType.Int,4)};
 			parameters[0].Value = model.NumId;
 			parameters[1].Value = model.NameInfo;
@@ -129,7 +130,8 @@ namespace Leadin.DAL
 			parameters[5].Value = model.SortNum;
 			parameters[6].Value = model.Remark;
 			parameters[7].Value = model.AddTime;
-			parameters[8].Value = model.Id;
+            parameters[8].Value = model.TemPrice;
+            parameters[9].Value = model.Id;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -193,7 +195,7 @@ namespace Leadin.DAL
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select  top 1 Id,NumId,NameInfo,ParentId,Price,StateInfo,SortNum,Remark,AddTime from tb_Technology ");
+			strSql.Append("select  top 1 Id,NumId,NameInfo,ParentId,Price,StateInfo,SortNum,Remark,AddTime,TemPrice from tb_Technology ");
 			strSql.Append(" where Id=@Id");
 			SqlParameter[] parameters = {
 					new SqlParameter("@Id", SqlDbType.Int,4)
@@ -257,7 +259,13 @@ namespace Leadin.DAL
 				{
 					model.AddTime=DateTime.Parse(row["AddTime"].ToString());
 				}
-			}
+                if (row["TemPrice"] != null && row["TemPrice"].ToString() != "")
+                {
+                    model.TemPrice = decimal.Parse(row["TemPrice"].ToString());
+                }
+                
+
+            }
 			return model;
 		}
 
@@ -267,7 +275,7 @@ namespace Leadin.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select Id,NumId,NameInfo,ParentId,Price,StateInfo,SortNum,Remark,AddTime ");
+			strSql.Append("select Id,NumId,NameInfo,ParentId,Price,StateInfo,SortNum,Remark,AddTime,TemPrice ");
 			strSql.Append(" FROM tb_Technology ");
 			if(strWhere.Trim()!="")
 			{
@@ -287,7 +295,7 @@ namespace Leadin.DAL
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append(" Id,NumId,NameInfo,ParentId,Price,StateInfo,SortNum,Remark,AddTime ");
+			strSql.Append(" Id,NumId,NameInfo,ParentId,Price,StateInfo,SortNum,Remark,AddTime,TemPrice ");
 			strSql.Append(" FROM tb_Technology ");
 			if(strWhere.Trim()!="")
 			{

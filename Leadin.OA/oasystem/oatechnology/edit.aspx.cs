@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
 
-namespace Leadin.OA.oasystem.oacustomer
+namespace Leadin.OA.oasystem.oatechnology
 {
     public partial class edit : Leadin.Web.UI.ManagePage
     {
-        BLL.Customer bll = new BLL.Customer();
-        Model.Customer model = new Model.Customer();
+        BLL.Technology bll = new BLL.Technology();
+        Model.Technology model = new Model.Technology();
 
         int id;
 
@@ -34,15 +34,14 @@ namespace Leadin.OA.oasystem.oacustomer
         /// </summary>
         void BindParentCompany()
         {
-            DataSet ds = bll.GetList(0, "ParentId=0 and StateInfo=1", "AddTime asc");
+            DataSet ds = bll.GetList(0, "ParentId=0 and StateInfo=1", "SortNum desc, AddTime asc");
 
             foreach (DataRow item in ds.Tables[0].Rows)
             {
                 ListItem list = new ListItem();
-                list.Text = item["CompanyName"].ToString();
+                list.Text = item["NameInfo"].ToString();
                 list.Value = item["Id"].ToString();
-
-                ddlParentID.Items.Add(list);
+                ddlTechnology.Items.Add(list);
 
             }
         }
@@ -56,20 +55,13 @@ namespace Leadin.OA.oasystem.oacustomer
         void BindDetail(int id)
         {
             model = bll.GetModel(id);
-
-            txtCompanyName.Text = model.CompanyName;
-            txtAddress.Text = model.Addressinfo;
-            txtEmail.Text = model.Email;
-            txtExplain.Text = model.Explain;
-            txtNameInfo.Text = model.NameInfo;
-            txtPhone.Text = model.Phone;
-            txtQQ.Text = model.QQNum;
-            txtWechat.Text = model.WeChat;
-
-            ddlParentID.SelectedValue = model.ParentId.ToString();
-          
-
-
+            txtPrice.Text =((decimal) model.Price).ToString("0.00");
+            //txtTemPrice.Text = ((decimal)model.Price).ToString("0.00");
+            txtRemark.Text = model.Remark;
+            txtSortNum.Text = model.SortNum.ToString();
+            txtTitle.Text = model.NameInfo;
+            ckState.Checked = model.StateInfo == 1 ? true : false;
+            ddlTechnology.SelectedValue = model.ParentId.ToString();
         }
 
 
@@ -92,39 +84,34 @@ namespace Leadin.OA.oasystem.oacustomer
                 model.AddTime = DateTime.Now;
             }
 
-            model.Addressinfo = txtAddress.Text;
-            model.CompanyName = txtCompanyName.Text;
-            model.Email = txtEmail.Text;
-            model.Explain = txtExplain.Text;
-            model.NameInfo = txtNameInfo.Text;
-            model.Phone = txtPhone.Text;
-            model.QQNum = txtQQ.Text;
-            model.ParentId=int.Parse(ddlParentID.SelectedValue);
+
+            model.NameInfo = txtTitle.Text;
+            model.ParentId = int.Parse(ddlTechnology.SelectedValue);
+            model.Price = decimal.Parse(txtPrice.Text);
+            model.Remark = txtRemark.Text;
+            model.SortNum = int.Parse(txtSortNum.Text);
             model.StateInfo = ckState.Checked ? 1 : 0;
-            model.Tel = "";
-           
-            model.WeChat = txtWechat.Text;
-            model.SourceId = 10013;
+            //model.TemPrice = decimal.Parse(txtTemPrice.Text);
             if (isEdit)
             {
                 if (bll.Update(model))
                 {
-                    JsMessage("客户信息修改成功", 2000, "true", "index.aspx" + Request.Url.Query);
+                    JsMessage("工艺信息修改成功", 2000, "true", "index.aspx" + Request.Url.Query);
                 }
                 else
                 {
-                    JsMessage("客户信息修改失败，请稍候重试", 2000, "false");
+                    JsMessage("工艺信息修改失败，请稍候重试", 2000, "false");
                 }
             }
             else
             {
                 if (bll.Add(model) > 0)
                 {
-                    JsMessage("客户信息录入成功", 2000, "true", "index.aspx");
+                    JsMessage("工艺信息录入成功", 2000, "true", "index.aspx");
                 }
                 else
                 {
-                    JsMessage("客户信息录入失败，请稍候重试", 2000, "false");
+                    JsMessage("工艺信息录入失败，请稍候重试", 2000, "false");
                 }
             }
 

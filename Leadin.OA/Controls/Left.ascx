@@ -105,7 +105,45 @@
                         </a>
                         <a href="/oasystem/oacustomer/edit.aspx">
                             <i class="am-icon-angle-right"></i>
-                            <span>编辑客户</span>
+                            <span>客户编辑</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="tpl-left-nav-item">
+                <a class="nav-link tpl-left-nav-link-list">
+                    <i class="am-icon-bar-chart"></i>
+                    <span>工艺管理</span>
+                    <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                </a>
+                <ul class="tpl-left-nav-sub-menu">
+                    <li>
+                        <a href="/oasystem/oatechnology/index.aspx">
+                            <i class="am-icon-angle-right"></i>
+                            <span>工艺列表</span>
+                        </a>
+                        <a href="/oasystem/oatechnology/edit.aspx">
+                            <i class="am-icon-angle-right"></i>
+                            <span>工艺编辑</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="tpl-left-nav-item">
+                <a class="nav-link tpl-left-nav-link-list">
+                    <i class="am-icon-bar-chart"></i>
+                    <span>公版管理</span>
+                    <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                </a>
+                <ul class="tpl-left-nav-sub-menu">
+                    <li>
+                        <a href="/oasystem/oapublicversion/index.aspx">
+                            <i class="am-icon-angle-right"></i>
+                            <span>公版列表</span>
+                        </a>
+                        <a href="/oasystem/oapublicversion/edit.aspx">
+                            <i class="am-icon-angle-right"></i>
+                            <span>公版编辑</span>
                         </a>
                     </li>
                 </ul>

@@ -107,8 +107,11 @@ namespace Leadin.Model
 			set{ _addtime=value;}
 			get{return _addtime;}
 		}
-		#endregion Model
 
-	}
+        public decimal? TemPrice { get; set; }
+
+        #endregion Model
+
+    }
 }
 

@@ -7,7 +7,7 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace Leadin.OA.oasystem.oacustomer {
+namespace Leadin.OA.oasystem.oapublicversion {
     
     
     public partial class index {
