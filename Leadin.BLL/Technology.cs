@@ -193,7 +193,19 @@ namespace Leadin.BLL
             return strNumId.ToString();
 
         }
-        #endregion  ExtensionMethod
-    }
+
+        /// <summary>
+        /// 取得所有工艺
+        /// </summary>
+        /// <param name="PId">父ID</param>
+        /// <param name="KId">种类ID</param>
+        /// <returns></returns>
+        public DataTable GetListChild(int PId, bool state)
+        {
+            return GetListChild(PId, state);
+        }
+
+            #endregion  ExtensionMethod
+        }
 }
 

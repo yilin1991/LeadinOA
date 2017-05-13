@@ -24,3 +24,19 @@
 }
 
 .am-form input[type=number], .am-form input[type=search], .am-form input[type=text], .am-form input[type=password], .am-form input[type=datetime], .am-form input[type=datetime-local], .am-form input[type=date], .am-form input[type=month], .am-form input[type=time], .am-form input[type=week], .am-form input[type=email], .am-form input[type=url], .am-form input[type=tel], .am-form input[type=color], .am-form select, .am-form textarea, .am-form-field{color:#333;}
+
+.technologylist{width:100%;}
+    .technologylist span.technology {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        padding-top: 12px;
+        display: inline-block;
+        padding-right: 15px;
+        color: #333;
+    }
+
+    .technologylist .am-checkbox, .technologylist .am-checkbox-inline, .technologylist .am-radio, .am-radio-inline {
+        font-size:1.2rem;padding-top:0;
+    }
+
+        .am-checkbox input[type=checkbox], .am-checkbox-inline input[type=checkbox], .am-radio input[type=radio], .am-radio-inline input[type=radio]{margin-left:-18px;margin-top:2px;}

@@ -352,7 +352,7 @@ namespace Leadin.DAL
 			return DbHelperSQL.Query(strSql.ToString());
 		}
 
-		/*
+        /*
 		/// <summary>
 		/// 分页获取数据列表
 		/// </summary>
@@ -377,10 +377,74 @@ namespace Leadin.DAL
 			return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
 		}*/
 
-		#endregion  BasicMethod
-		#region  ExtensionMethod
+        #endregion  BasicMethod
+        #region  ExtensionMethod
 
-		#endregion  ExtensionMethod
-	}
+        /// <summary>
+        /// 取得所有工艺
+        /// </summary>
+        /// <param name="PId">父ID</param>
+        /// <param name="KId">种类ID</param>
+        /// <returns></returns>
+        public DataTable GetListChild(int PId, bool state)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select Id,NumId,NameInfo,ParentId,Price,StateInfo,SortNum,Remark,AddTime,TemPrice");
+            strSql.Append(" FROM tb_Technology ");
+            //strSql.Append(" Where ParentId=" + PId);
+
+            if (state)
+            {
+                strSql.Append("Where StateInfo=1 ");
+            }
+
+            strSql.Append(" order by SortNum desc,Id asc");
+            DataSet ds = DbHelperSQL.Query(strSql.ToString());
+            DataTable oldData = ds.Tables[0] as DataTable;
+            if (oldData == null)
+            {
+                return null;
+            }
+
+            //复制结构
+            DataTable newData = oldData.Clone();
+            //调用迭代组合成DAGATABLE
+            GetChannelChild(oldData, newData, PId);
+            return newData;
+        }
+
+        /// <summary>
+        /// 获取子类别
+        /// </summary>
+        /// <param name="parentId">父编号</param>
+        /// <param name="stateInfo">状态</param>
+        /// <returns></returns>
+        private void GetChannelChild(DataTable oldData, DataTable newData, int PId)
+        {
+
+            DataRow[] dr = oldData.Select("ParentId=" + PId);
+            for (int i = 0; i < dr.Length; i++)
+            {
+                //添加一行数据
+                DataRow row = newData.NewRow();
+                row["Id"] = int.Parse(dr[i]["Id"].ToString());
+                row["NumId"] = dr[i]["NumId"].ToString();
+                row["NameInfo"] = dr[i]["NameInfo"].ToString();
+                row["ParentId"] = int.Parse(dr[i]["ParentId"].ToString());
+                row["Price"] = int.Parse(dr[i]["Price"].ToString());
+                row["SortNum"] = int.Parse(dr[i]["SortNum"].ToString());
+                row["AddTime"] = dr[i]["AddTime"].ToString();
+                row["StateInfo"] = int.Parse(dr[i]["StateInfo"].ToString());
+                row["TemPrice"] = dr[i]["TemPrice"].ToString();
+                row["Remark"] = dr[i]["Remark"].ToString();
+                newData.Rows.Add(row);
+                //调用自身迭代
+                this.GetChannelChild(oldData, newData, int.Parse(dr[i]["Id"].ToString()));
+            }
+        }
+
+
+        #endregion  ExtensionMethod
+    }
 }
 

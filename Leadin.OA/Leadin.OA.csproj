@@ -125,8 +125,12 @@
     <Content Include="Login.aspx" />
     <Content Include="oasystem\oacategory\edit.aspx" />
     <Content Include="oasystem\oacategory\index.aspx" />
+    <Content Include="oasystem\oacustomer\address-edit.aspx" />
+    <Content Include="oasystem\oacustomer\address-index.aspx" />
     <Content Include="oasystem\oacustomer\edit.aspx" />
     <Content Include="oasystem\oacustomer\index.aspx" />
+    <Content Include="oasystem\oaorder\edit.aspx" />
+    <Content Include="oasystem\oaorder\index.aspx" />
     <Content Include="oasystem\oapaper\edit.aspx" />
     <Content Include="oasystem\oapaper\index.aspx" />
     <Content Include="oasystem\oapublicversion\edit.aspx" />
@@ -213,6 +217,20 @@
     <Compile Include="oasystem\oacategory\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="oasystem\oacustomer\address-edit.aspx.cs">
+      <DependentUpon>address-edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oasystem\oacustomer\address-edit.aspx.designer.cs">
+      <DependentUpon>address-edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="oasystem\oacustomer\address-index.aspx.cs">
+      <DependentUpon>address-index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oasystem\oacustomer\address-index.aspx.designer.cs">
+      <DependentUpon>address-index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="oasystem\oacustomer\edit.aspx.cs">
       <DependentUpon>edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -225,6 +243,20 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="oasystem\oacustomer\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="oasystem\oaorder\edit.aspx.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oasystem\oaorder\edit.aspx.designer.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="oasystem\oaorder\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oasystem\oaorder\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="oasystem\oapaper\edit.aspx.cs">

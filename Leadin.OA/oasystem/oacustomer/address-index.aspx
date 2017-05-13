@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="Leadin.OA.oasystem.oacustomer.index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="address-index.aspx.cs" Inherits="Leadin.OA.oasystem.oacustomer.address_index" %>
 
 <%@ Register Src="~/Controls/Header.ascx" TagPrefix="uc1" TagName="Header" %>
 <%@ Register Src="~/Controls/Left.ascx" TagPrefix="uc1" TagName="Left" %>
@@ -44,7 +44,7 @@
                         <ol class="am-breadcrumb">
                             <li><a href="/index.aspx" class="am-icon-home">首页</a></li>
                             <li><a href="/oasystem/oacustomer/index.aspx">客户管理</a></li>
-                            <li class="am-active">客户列表</li>
+                            <li class="am-active">收货地址管理</li>
                         </ol>
 
                     </div>
@@ -92,50 +92,31 @@
                                                 <tr>
                                                     <th class="table-check">
                                                         <input type="checkbox" id="ckCheckAll"></th>
-                                                    <th class="table-numid">客户编号</th>
-                                                    <th class="table-author">公司名称</th>
-                                                    <th class="table-author">客户来源</th>
-                                                    <th class="table-author">所属公司</th>
                                                     <th class="table-author">联系人</th>
                                                     <th class="table-author">手机号</th>
-                                                    <th class="table-author">状态</th>
-                                                    <th class="table-author">邮箱</th>
-                                                    <th class="table-author">微信号</th>
-                                                    <th class="table-author">QQ号</th>
                                                     <th class="table-author">公司地址</th>
-                                                    <th class="table-author">添加时间</th>
-                                                    <th class="table-author">说明</th>
+                                                    <th class="table-author">状态</th>
                                                     <th class="table-set">操作</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
 
-                                                <asp:Repeater runat="server" ID="repList" OnItemCommand="repList_ItemCommand">
+                                                <asp:Repeater runat="server" ID="repList">
                                                     <ItemTemplate>
                                                         <tr>
                                                             <td>
                                                                 <asp:CheckBox runat="server" ID="ckChecked" />
                                                             </td>
-                                                            <td><%# Eval("NumId") %></td>
-                                                            <td><a href="edit.aspx?id=<%# Eval("Id") %>"><%# Eval("CompanyName") %></a><asp:HiddenField runat="server" ID="hidId"  Value='<%# Eval("Id") %>'/></td>
-                                                            <td><%# GetCategoryName(int.Parse(Eval("SourceId").ToString())) %></td>
-                                                            <td><%# GetPartentCompany(int.Parse(Eval("ParentId").ToString())) %></td>
-                                                            <td><%# Eval("NameInfo").ToString()==""?"--":Eval("NameInfo").ToString() %></td>
+                                                            <td><a href="address-edit.aspx?cid=<%# cid %>&id=<%# Eval("Id") %>"><%# Eval("NameInfo").ToString()==""?"--":Eval("NameInfo").ToString() %></a></td>
                                                             <td><%#Eval("Phone").ToString()==""?"--":Eval("Phone").ToString() %></td>
-                                                            <td><%# Eval("StateInfo").ToString()=="1"?"正常":"禁用" %></td>
-                                                            <td><%#Eval("Email").ToString()==""?"--":Eval("Email").ToString() %></td>
-                                                            <td><%#Eval("WeChat").ToString()==""?"--":Eval("WeChat").ToString() %></td>
-                                                            <td><%#Eval("QQNum").ToString()==""?"--":Eval("QQNum").ToString() %></td>
                                                             <td><%#Eval("Addressinfo").ToString()==""?"--":Eval("Addressinfo").ToString() %></td>
-                                                            <td><%#Eval("AddTime") %></td>
-                                                            <td><%#Eval("Explain").ToString()==""?"--":Eval("Explain").ToString() %></td>
+                                                            <td><%# Eval("StateInfo").ToString()=="1"?"正常":"禁用" %></td>
 
                                                             <td>
                                                                 <div class="am-btn-toolbar">
                                                                     <div class="am-btn-group am-btn-group-xs">
-                                                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                                                                        <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
-                                                                        <asp:LinkButton runat="server" ID="lbtnAddress" CommandName="lbtnAddress" Enabled='<%# Eval("ParentId").ToString()=="0"?true:false %>' CssClass="am-btn am-btn-default am-btn-xs am-text-secondary" ><span class="am-icon-pencil-square-o"></span> 地址</asp:LinkButton>
+                                                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span>编辑</button>
+                                                                        <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span>删除</button>
                                                                     </div>
                                                                 </div>
                                                             </td>

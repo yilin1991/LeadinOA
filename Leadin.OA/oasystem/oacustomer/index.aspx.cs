@@ -68,5 +68,25 @@ namespace Leadin.OA.oasystem.oacustomer
         {
             Response.Redirect("edit.aspx");
         }
+
+
+
+        /// <summary>
+        /// 属性修改
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="e"></param>
+        protected void repList_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+
+            if (e.CommandName == "lbtnAddress")
+            {
+
+                HiddenField hidId = e.Item.FindControl("hidId") as HiddenField;
+
+                Response.Redirect("address-index.aspx?cid="+hidId.Value);
+            }
+
+        }
     }
 }
