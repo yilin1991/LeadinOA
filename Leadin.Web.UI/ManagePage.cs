@@ -13,7 +13,59 @@ namespace Leadin.Web.UI
     public class ManagePage:System.Web.UI.Page
     {
 
+        public ManagePage()
+        {
+            this.Load += new EventHandler(ManagePage_Load);
+          
+        }
 
+        void ManagePage_Load(object sender, EventArgs e)
+        {
+            if (!CheckLogin())
+            {
+                Response.Write("<script>parent.location.href='/login.aspx'</script>");
+                Response.End();
+            }
+        }
+
+        /// <summary>
+        /// 判断管理员是否已经登录(解决Session超时问题)
+        /// </summary>
+        /// <summary>
+        /// 检查是否登录
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckLogin()
+        {
+           
+
+
+            if (Session["AdminId"] != null && Session["AdminAccount"] != null )
+            {
+                return true;
+            }
+            else
+            {
+                BLL.Workers bll = new BLL.Workers();
+                if (!string.IsNullOrWhiteSpace(Utils.GetCookie("AdminAccount")) && !string.IsNullOrWhiteSpace(Utils.GetCookie("AdminPwd")))
+                {
+                    string adminName = Utils.GetCookie("AdminAccount");
+                    string adminPass = Utils.GetCookie("AdminPwd");
+
+                    DataSet ds = bll.GetList("Account='" + adminName + "' and Pwd='" + adminPass + "'");
+
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        Session["AdminId"] = ds.Tables[0].Rows[0]["Id"].ToString();
+                        Session["AdminAccount"] = ds.Tables[0].Rows[0]["Account"].ToString();
+                        return true;
+                    }
+                }
+
+            }
+
+            return false;
+        }
 
         /// <summary>
         /// 绑定下拉列表类别

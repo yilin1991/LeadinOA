@@ -6,7 +6,7 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2017/5/2 15:11:21   N/A    初版
+* V0.01  2017/5/16 11:39:02   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
@@ -28,8 +28,8 @@ namespace Leadin.BLL
 	/// </summary>
 	public partial class Distribution
 	{
-		private readonly IDistribution dal= DataAccess.CreateDistribution();
-        public Distribution()
+		private readonly IDistribution dal=DataAccess.CreateDistribution();
+		public Distribution()
 		{}
 		#region  BasicMethod
 
@@ -89,7 +89,6 @@ namespace Leadin.BLL
 			
 			return dal.GetModel(Id);
 		}
-
 
 
 		/// <summary>

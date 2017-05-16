@@ -121,6 +121,7 @@
     <Content Include="js\jquery.hDialog.js" />
     <Content Include="js\jquery.hDialog.min.js" />
     <Content Include="js\jquery.min.js" />
+    <Content Include="js\order.js" />
     <Content Include="js\Validform_v5.3.2.js" />
     <Content Include="Login.aspx" />
     <Content Include="oasystem\oacategory\edit.aspx" />
@@ -129,6 +130,8 @@
     <Content Include="oasystem\oacustomer\address-index.aspx" />
     <Content Include="oasystem\oacustomer\edit.aspx" />
     <Content Include="oasystem\oacustomer\index.aspx" />
+    <Content Include="oasystem\oadstribution\edit.aspx" />
+    <Content Include="oasystem\oadstribution\index.aspx" />
     <Content Include="oasystem\oaorder\edit.aspx" />
     <Content Include="oasystem\oaorder\index.aspx" />
     <Content Include="oasystem\oapaper\edit.aspx" />
@@ -149,6 +152,8 @@
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Tools\CheckAccount.ashx" />
     <Content Include="Tools\CheckPaperNumId.ashx" />
+    <Content Include="Tools\GetAddress.ashx" />
+    <Content Include="Tools\GetDelivery.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -245,6 +250,20 @@
     <Compile Include="oasystem\oacustomer\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="oasystem\oadstribution\edit.aspx.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oasystem\oadstribution\edit.aspx.designer.cs">
+      <DependentUpon>edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="oasystem\oadstribution\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oasystem\oadstribution\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="oasystem\oaorder\edit.aspx.cs">
       <DependentUpon>edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -335,6 +354,12 @@
     </Compile>
     <Compile Include="Tools\CheckPaperNumId.ashx.cs">
       <DependentUpon>CheckPaperNumId.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\GetAddress.ashx.cs">
+      <DependentUpon>GetAddress.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\GetDelivery.ashx.cs">
+      <DependentUpon>GetDelivery.ashx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -63,9 +63,9 @@ namespace Leadin.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into tb_PublicVersion(");
-			strSql.Append("NumId,NameInfo,Num,ImgUrl,SortNum,StateInfo,Remark)");
+			strSql.Append("NumId,NameInfo,Num,ImgUrl,SortNum,StateInfo,Remark,CustomerId)");
 			strSql.Append(" values (");
-			strSql.Append("@NumId,@NameInfo,@Num,@ImgUrl,@SortNum,@StateInfo,@Remark)");
+			strSql.Append("@NumId,@NameInfo,@Num,@ImgUrl,@SortNum,@StateInfo,@Remark,@CustomerId)");
 			strSql.Append(";select @@IDENTITY");
 			SqlParameter[] parameters = {
 					new SqlParameter("@NumId", SqlDbType.NVarChar,100),
@@ -74,7 +74,7 @@ namespace Leadin.DAL
 					new SqlParameter("@ImgUrl", SqlDbType.NVarChar,200),
 					new SqlParameter("@SortNum", SqlDbType.Int,4),
 					new SqlParameter("@StateInfo", SqlDbType.Int,4),
-					new SqlParameter("@Remark", SqlDbType.NText)};
+					new SqlParameter("@Remark", SqlDbType.NText),new SqlParameter("@CustomerId",SqlDbType.Int,4)};
 			parameters[0].Value = model.NumId;
 			parameters[1].Value = model.NameInfo;
 			parameters[2].Value = model.Num;
@@ -82,7 +82,7 @@ namespace Leadin.DAL
 			parameters[4].Value = model.SortNum;
 			parameters[5].Value = model.StateInfo;
 			parameters[6].Value = model.Remark;
-
+            parameters[7].Value = model.CustomerId;
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);
 			if (obj == null)
 			{
@@ -106,7 +106,7 @@ namespace Leadin.DAL
 			strSql.Append("ImgUrl=@ImgUrl,");
 			strSql.Append("SortNum=@SortNum,");
 			strSql.Append("StateInfo=@StateInfo,");
-			strSql.Append("Remark=@Remark");
+			strSql.Append("Remark=@Remark,CustomerId=@CustomerId");
 			strSql.Append(" where Id=@Id");
 			SqlParameter[] parameters = {
 					new SqlParameter("@NumId", SqlDbType.NVarChar,100),
@@ -116,6 +116,7 @@ namespace Leadin.DAL
 					new SqlParameter("@SortNum", SqlDbType.Int,4),
 					new SqlParameter("@StateInfo", SqlDbType.Int,4),
 					new SqlParameter("@Remark", SqlDbType.NText),
+                    new SqlParameter("@CustomerId",SqlDbType.Int,4),
 					new SqlParameter("@Id", SqlDbType.Int,4)};
 			parameters[0].Value = model.NumId;
 			parameters[1].Value = model.NameInfo;
@@ -124,7 +125,8 @@ namespace Leadin.DAL
 			parameters[4].Value = model.SortNum;
 			parameters[5].Value = model.StateInfo;
 			parameters[6].Value = model.Remark;
-			parameters[7].Value = model.Id;
+            parameters[7].Value = model.CustomerId;
+			parameters[8].Value = model.Id;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -188,7 +190,7 @@ namespace Leadin.DAL
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select  top 1 Id,NumId,NameInfo,Num,ImgUrl,SortNum,StateInfo,Remark from tb_PublicVersion ");
+			strSql.Append("select  top 1 Id,NumId,NameInfo,Num,ImgUrl,SortNum,StateInfo,Remark,CustomerId from tb_PublicVersion ");
 			strSql.Append(" where Id=@Id");
 			SqlParameter[] parameters = {
 					new SqlParameter("@Id", SqlDbType.Int,4)
@@ -248,7 +250,15 @@ namespace Leadin.DAL
 				{
 					model.Remark=row["Remark"].ToString();
 				}
-			}
+                if (row["CustomerId"] != null && row["CustomerId"].ToString() != "")
+                {
+                    model.CustomerId = int.Parse(row["CustomerId"].ToString());
+                }
+
+                
+
+
+            }
 			return model;
 		}
 
@@ -258,7 +268,7 @@ namespace Leadin.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select Id,NumId,NameInfo,Num,ImgUrl,SortNum,StateInfo,Remark ");
+			strSql.Append("select Id,NumId,NameInfo,Num,ImgUrl,SortNum,StateInfo,Remark,CustomerId ");
 			strSql.Append(" FROM tb_PublicVersion ");
 			if(strWhere.Trim()!="")
 			{
@@ -278,7 +288,7 @@ namespace Leadin.DAL
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append(" Id,NumId,NameInfo,Num,ImgUrl,SortNum,StateInfo,Remark ");
+			strSql.Append(" Id,NumId,NameInfo,Num,ImgUrl,SortNum,StateInfo,Remark,CustomerId ");
 			strSql.Append(" FROM tb_PublicVersion ");
 			if(strWhere.Trim()!="")
 			{

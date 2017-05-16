@@ -6,7 +6,7 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2017/5/2 15:11:24   N/A    初版
+* V0.01  2017/5/16 11:39:03   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
@@ -28,7 +28,9 @@ namespace Leadin.Model
 		#region Model
 		private int _id;
 		private int _sonorderid;
-		private int? _typeid;
+		private int _typeid;
+		private int _pricetype=0;
+		private string _distributionnum;
 		private int? _workersid;
 		private int? _distributionid;
 		private decimal _price=0M;
@@ -44,18 +46,34 @@ namespace Leadin.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int SonOrderId
-		{
+		public int OrderId
+        {
 			set{ _sonorderid=value;}
 			get{return _sonorderid;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? TypeId
+		public int TypeId
 		{
 			set{ _typeid=value;}
 			get{return _typeid;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public int PriceType
+		{
+			set{ _pricetype=value;}
+			get{return _pricetype;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string DistributionNum
+		{
+			set{ _distributionnum=value;}
+			get{return _distributionnum;}
 		}
 		/// <summary>
 		/// 

@@ -135,7 +135,8 @@
                                                                     <div class="am-btn-group am-btn-group-xs">
                                                                         <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
                                                                         <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
-                                                                        <asp:LinkButton runat="server" ID="lbtnAddress" CommandName="lbtnAddress" Enabled='<%# Eval("ParentId").ToString()=="0"?true:false %>' CssClass="am-btn am-btn-default am-btn-xs am-text-secondary" ><span class="am-icon-pencil-square-o"></span> 地址</asp:LinkButton>
+                                                                        <asp:LinkButton runat="server" ID="lbtnAddress" CommandName="lbtnAddress" Visible='<%# Eval("ParentId").ToString()=="0"?true:false %>' CssClass="am-btn am-btn-default am-btn-xs am-text-secondary" ><span class="am-icon-pencil-square-o"></span> 地址</asp:LinkButton>
+                                                                         <asp:LinkButton runat="server" ID="lbtnpublicversion" CommandName="lbtnpublicversion" Visible='<%# Eval("ParentId").ToString()=="0"?false:true %>' CssClass="am-btn am-btn-default am-btn-xs am-text-secondary" ><span class="am-icon-pencil-square-o"></span> 公版</asp:LinkButton>
                                                                     </div>
                                                                 </div>
                                                             </td>

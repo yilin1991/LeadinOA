@@ -81,12 +81,15 @@ namespace Leadin.OA.oasystem.oacustomer
 
             if (e.CommandName == "lbtnAddress")
             {
-
+                HiddenField hidId = e.Item.FindControl("hidId") as HiddenField;
+                Response.Redirect("address-index.aspx?cid=" + hidId.Value);
+            }
+            if (e.CommandName == "lbtnpublicversion")
+            {
                 HiddenField hidId = e.Item.FindControl("hidId") as HiddenField;
 
-                Response.Redirect("address-index.aspx?cid="+hidId.Value);
+                Response.Redirect("/oasystem/oapublicversion/index.aspx?cid=" + hidId.Value);
             }
-
         }
     }
 }

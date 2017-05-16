@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="edit.aspx.cs" Inherits="Leadin.OA.oasystem.oapublicversion.edit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="edit.aspx.cs" Inherits="Leadin.OA.oasystem.oadstribution.edit" %>
 
 <%@ Register Src="~/Controls/Header.ascx" TagPrefix="uc1" TagName="Header" %>
 <%@ Register Src="~/Controls/Left.ascx" TagPrefix="uc1" TagName="Left" %>
@@ -32,15 +32,19 @@
             <uc1:Left runat="server" ID="Left" />
             <%-- 左侧导航 End --%>
 
+
+
+
             <div class="tpl-content-wrapper">
+
+
 
                 <div class="tpl-portlet-components">
                     <div class="portlet-title">
                         <ol class="am-breadcrumb">
                             <li><a href="/index.aspx" class="am-icon-home">首页</a></li>
-                            <li><a href="/oasystem/oacustomer/index.aspx">客户管理</a></li>
-                               <li><a href="/oasystem/oapublicversion/index.aspx">公版管理</a></li>
-                            <li class="am-active">公版编辑</li>
+                            <li><a href="/oasystem/oadstribution/index.aspx">合作快递</a></li>
+                            <li class="am-active">快递编辑</li>
                         </ol>
 
                     </div>
@@ -48,41 +52,48 @@
 
                         <div class="am-g tpl-amazeui-form">
 
+
                             <div class="am-u-sm-12 am-u-md-9">
                                 <div class="am-form am-form-horizontal">
                                     <div class="am-form-group">
-                                        <label for="txtNameInfo" class="am-u-sm-2 am-form-label">公版名称</label>
+                                        <label for="txtCompanyName" class="am-u-sm-2 am-form-label">快递名称</label>
                                         <div class="am-u-sm-10">
-                                            <asp:TextBox runat="server" ID="txtNameInfo" placeholder="请输入公版名称，必填" datatype="*" nullmsg="公版名称不能为空！"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtCompanyName" placeholder="请输入快递公司名称，必填" datatype="*" nullmsg="快递公司名称不能为空！"></asp:TextBox>
                                         </div>
                                     </div>
-                                 
                                     <div class="am-form-group">
-                                        <label for="txtNum" class="am-u-sm-2 am-form-label">公版数量</label>
+                                        <label for="txtNameInfo" class="am-u-sm-2 am-form-label">联系人</label>
                                         <div class="am-u-sm-10">
-                                            <asp:TextBox runat="server" ID="txtNum" TextMode="Number" placeholder="请输入公版数量，选填" datatype="n" nullmsg="公版数量不能为空！" errormsg="公版数量为整数！"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtNameInfo" placeholder="请输入揽件人姓名，选填"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="am-form-group">
+                                        <label for="txtPhone" class="am-u-sm-2 am-form-label">手机号</label>
+                                        <div class="am-u-sm-10">
+                                            <asp:TextBox runat="server" ID="txtPhone" placeholder="请输入类别的别名，选填" datatype="m" errormsg="请输入正确的手机号"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="am-form-group">
+                                        <label for="txtPrice" class="am-u-sm-2 am-form-label">快递费用</label>
+                                        <div class="am-u-sm-10">
+                                            <asp:TextBox runat="server" ID="txtPrice" placeholder="请输入快递费用，保留两位小数必填"  datatype="price"  nullmsg="快递费用不能为空！" errormsg="请输入正确的快递费用保留两位小数！"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="am-form-group">
                                         <label for="txtSortNum" class="am-u-sm-2 am-form-label">排序</label>
                                         <div class="am-u-sm-10">
-                                            <asp:TextBox runat="server" ID="txtSortNum" TextMode="Number" Text="10000" pattern="[0-9]*" placeholder="请输入类别的排序，数字越大越靠前" datatype="n" nullmsg="请输入类别的排序！" errormsg="类别排序为整数，数字越大越靠前！"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtSortNum" TextMode="Number" Text="10000" pattern="[0-9]*" placeholder="请输入排序，数字越大越靠前" datatype="n" nullmsg="请输入排序！" errormsg="排序为整数，数字越大越靠前！"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="am-form-group">
-                                        <label for="txtRemark" class="am-u-sm-2 am-form-label">公版简介</label>
-                                        <div class="am-u-sm-10">
-                                            <asp:TextBox runat="server" ID="txtRemark" TextMode="MultiLine" Rows="5" placeholder="请输入类别的简介，选填"></asp:TextBox>
-                                        </div>
-                                    </div>
-
-                                    <div class="am-form-group">
-                                        <label for="user-QQ" class="am-u-sm-2 am-form-label">公版状态</label>
+                                        <label for="user-QQ" class="am-u-sm-2 am-form-label">快递状态</label>
                                         <div class="am-u-sm-10">
                                             <label class="am-checkbox-inline">
                                                 <asp:CheckBox runat="server" ID="ckState" Checked="true" />
                                                 勾选表示启用
                                             </label>
+
                                         </div>
                                     </div>
 
@@ -117,10 +128,13 @@
                         }
                     },
                     postonce: true,
+                    datatype: {
+                        "price": /^[0-9]+(.[0-9]{2})?$/
+                    }
                 });
 
 
-                setLeftMenu("客户管理", "客户列表")
+                setLeftMenu("合作快递", "快递编辑");
 
 
 

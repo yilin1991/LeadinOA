@@ -129,7 +129,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="tpl-left-nav-item">
+            <%--<li class="tpl-left-nav-item">
                 <a class="nav-link tpl-left-nav-link-list">
                     <i class="am-icon-bar-chart"></i>
                     <span>公版管理</span>
@@ -147,7 +147,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li>--%>
              <li class="tpl-left-nav-item">
                 <a class="nav-link tpl-left-nav-link-list">
                     <i class="am-icon-bar-chart"></i>
@@ -163,6 +163,25 @@
                         <a href="/oasystem/oaorder/edit.aspx">
                             <i class="am-icon-angle-right"></i>
                             <span>订单编辑</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="tpl-left-nav-item">
+                <a class="nav-link tpl-left-nav-link-list">
+                    <i class="am-icon-bar-chart"></i>
+                    <span>合作快递</span>
+                    <i class="am-icon-angle-right tpl-left-nav-more-ico am-fr am-margin-right"></i>
+                </a>
+                <ul class="tpl-left-nav-sub-menu">
+                    <li>
+                        <a href="/oasystem/oadstribution/index.aspx">
+                            <i class="am-icon-angle-right"></i>
+                            <span>快递列表</span>
+                        </a>
+                        <a href="/oasystem/oadstribution/edit.aspx">
+                            <i class="am-icon-angle-right"></i>
+                            <span>快递编辑</span>
                         </a>
                     </li>
                 </ul>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="Leadin.OA.oasystem.oapublicversion.index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="Leadin.OA.oasystem.oadstribution.index" %>
 
 <%@ Register Src="~/Controls/Header.ascx" TagPrefix="uc1" TagName="Header" %>
 <%@ Register Src="~/Controls/Left.ascx" TagPrefix="uc1" TagName="Left" %>
@@ -43,9 +43,8 @@
                     <div class="portlet-title">
                         <ol class="am-breadcrumb">
                             <li><a href="/index.aspx" class="am-icon-home">首页</a></li>
-                            <li><a href="/oasystem/oacustomer/index.aspx">客户管理</a></li>
-                          
-                            <li class="am-active">公版列表</li>
+                            <li><a href="/oasystem/oadstribution/index.aspx">合作快递</a></li>
+                            <li class="am-active">快递列表</li>
                         </ol>
 
                     </div>
@@ -92,13 +91,13 @@
                                         <thead>
                                             <tr>
                                                 <th class="table-check">
-                                                    <input type="checkbox" id="ckCheckAll"></th>
-                                                <th class="table-numid">公版编号</th>
-                                                <th class="table-author">公版名称</th>
-                                                <th class="table-author">公版数量</th>
-                                                <th class="table-author">状态</th>
+                                                    <input type="checkbox" id="ckCheckAll"></th>                                              
+                                                <th class="table-author">快递名称</th>
+                                                <th class="table-author">揽件人</th>
+                                                <th class="table-author">联系电话</th>
+                                                <th class="table-author">快递费用</th>
                                                 <th class="table-author">排序</th>
-                                                <th class="table-author">说明</th>
+                                                <th class="table-author">状态</th>
                                                 <th class="table-set">操作</th>
                                             </tr>
                                         </thead>
@@ -109,16 +108,13 @@
                                                     <tr>
                                                         <td>
                                                             <asp:CheckBox runat="server" ID="ckChecked" />
-                                                        </td>
-                                                        <td><%# Eval("NumId") %></td>
-                                                        <td><a href="edit.aspx?id=<%# Eval("Id") %>&cid=<%# id %>"><%# Eval("NameInfo") %></a></td>
-                                                         <td><%# Eval("Num").ToString()==""?"--":Eval("Num").ToString() %></td>
-                                                       
-                                                        <td><%# Eval("StateInfo").ToString()=="1"?"正常":"禁用" %></td>
-                                                         <td><%# Eval("SortNum") %></td>
-                                                       
-                                                          <td><%#Eval("Remark").ToString()==""?"--":Eval("Remark").ToString() %></td>
-
+                                                        </td>                                                      
+                                                        <td><a href="edit.aspx?id=<%# Eval("Id") %>"><%# Eval("CompanyName") %></a></td>
+                                                        <td><%#Eval("NameInfo").ToString()==""?"--":Eval("NameInfo").ToString() %></td>
+                                                        <td><%# Eval("ContactTel").ToString()==""?"--":Eval("ContactTel").ToString() %></td>
+                                                        <td><%# decimal.Parse(Eval("Price").ToString()).ToString("0.00") %></td>
+                                                        <td><%# Eval("SortNum") %></td>
+                                                        <td><%# Eval("StateInfo").ToString()=="1"?"正常":"禁用" %></td>   
                                                         <td>
                                                             <div class="am-btn-toolbar">
                                                                 <div class="am-btn-group am-btn-group-xs">
@@ -170,7 +166,7 @@
         <script>
             $(function () {
 
-                setLeftMenu("客户管理", "客户列表");
+                setLeftMenu("合作快递", "快递列表");
 
             })
 

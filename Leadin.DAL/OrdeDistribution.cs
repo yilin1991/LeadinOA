@@ -6,7 +6,7 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2017/5/2 15:11:24   N/A    初版
+* V0.01  2017/5/16 11:39:03   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
@@ -63,23 +63,27 @@ namespace Leadin.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into tb_OrdeDistribution(");
-			strSql.Append("SonOrderId,TypeId,WorkersId,DistributionId,Price,Remark)");
+			strSql.Append("OrderId,TypeId,PriceType,DistributionNum,WorkersId,DistributionId,Price,Remark)");
 			strSql.Append(" values (");
-			strSql.Append("@SonOrderId,@TypeId,@WorkersId,@DistributionId,@Price,@Remark)");
+			strSql.Append("@OrderId,@TypeId,@PriceType,@DistributionNum,@WorkersId,@DistributionId,@Price,@Remark)");
 			strSql.Append(";select @@IDENTITY");
 			SqlParameter[] parameters = {
-					new SqlParameter("@SonOrderId", SqlDbType.Int,4),
+					new SqlParameter("@OrderId", SqlDbType.Int,4),
 					new SqlParameter("@TypeId", SqlDbType.Int,4),
+					new SqlParameter("@PriceType", SqlDbType.Int,4),
+					new SqlParameter("@DistributionNum", SqlDbType.NVarChar,100),
 					new SqlParameter("@WorkersId", SqlDbType.Int,4),
 					new SqlParameter("@DistributionId", SqlDbType.Int,4),
 					new SqlParameter("@Price", SqlDbType.Decimal,9),
 					new SqlParameter("@Remark", SqlDbType.NText)};
-			parameters[0].Value = model.SonOrderId;
+			parameters[0].Value = model.OrderId;
 			parameters[1].Value = model.TypeId;
-			parameters[2].Value = model.WorkersId;
-			parameters[3].Value = model.DistributionId;
-			parameters[4].Value = model.Price;
-			parameters[5].Value = model.Remark;
+			parameters[2].Value = model.PriceType;
+			parameters[3].Value = model.DistributionNum;
+			parameters[4].Value = model.WorkersId;
+			parameters[5].Value = model.DistributionId;
+			parameters[6].Value = model.Price;
+			parameters[7].Value = model.Remark;
 
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);
 			if (obj == null)
@@ -98,28 +102,34 @@ namespace Leadin.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update tb_OrdeDistribution set ");
-			strSql.Append("SonOrderId=@SonOrderId,");
+			strSql.Append("OrderId=@OrderId,");
 			strSql.Append("TypeId=@TypeId,");
+			strSql.Append("PriceType=@PriceType,");
+			strSql.Append("DistributionNum=@DistributionNum,");
 			strSql.Append("WorkersId=@WorkersId,");
 			strSql.Append("DistributionId=@DistributionId,");
 			strSql.Append("Price=@Price,");
 			strSql.Append("Remark=@Remark");
 			strSql.Append(" where Id=@Id");
 			SqlParameter[] parameters = {
-					new SqlParameter("@SonOrderId", SqlDbType.Int,4),
+					new SqlParameter("@OrderId", SqlDbType.Int,4),
 					new SqlParameter("@TypeId", SqlDbType.Int,4),
+					new SqlParameter("@PriceType", SqlDbType.Int,4),
+					new SqlParameter("@DistributionNum", SqlDbType.NVarChar,100),
 					new SqlParameter("@WorkersId", SqlDbType.Int,4),
 					new SqlParameter("@DistributionId", SqlDbType.Int,4),
 					new SqlParameter("@Price", SqlDbType.Decimal,9),
 					new SqlParameter("@Remark", SqlDbType.NText),
 					new SqlParameter("@Id", SqlDbType.Int,4)};
-			parameters[0].Value = model.SonOrderId;
+			parameters[0].Value = model.OrderId;
 			parameters[1].Value = model.TypeId;
-			parameters[2].Value = model.WorkersId;
-			parameters[3].Value = model.DistributionId;
-			parameters[4].Value = model.Price;
-			parameters[5].Value = model.Remark;
-			parameters[6].Value = model.Id;
+			parameters[2].Value = model.PriceType;
+			parameters[3].Value = model.DistributionNum;
+			parameters[4].Value = model.WorkersId;
+			parameters[5].Value = model.DistributionId;
+			parameters[6].Value = model.Price;
+			parameters[7].Value = model.Remark;
+			parameters[8].Value = model.Id;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -183,7 +193,7 @@ namespace Leadin.DAL
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select  top 1 Id,SonOrderId,TypeId,WorkersId,DistributionId,Price,Remark from tb_OrdeDistribution ");
+			strSql.Append("select  top 1 Id,OrderId,TypeId,PriceType,DistributionNum,WorkersId,DistributionId,Price,Remark from tb_OrdeDistribution ");
 			strSql.Append(" where Id=@Id");
 			SqlParameter[] parameters = {
 					new SqlParameter("@Id", SqlDbType.Int,4)
@@ -215,13 +225,21 @@ namespace Leadin.DAL
 				{
 					model.Id=int.Parse(row["Id"].ToString());
 				}
-				if(row["SonOrderId"]!=null && row["SonOrderId"].ToString()!="")
+				if(row["OrderId"]!=null && row["OrderId"].ToString()!="")
 				{
-					model.SonOrderId=int.Parse(row["SonOrderId"].ToString());
+					model.OrderId=int.Parse(row["OrderId"].ToString());
 				}
 				if(row["TypeId"]!=null && row["TypeId"].ToString()!="")
 				{
 					model.TypeId=int.Parse(row["TypeId"].ToString());
+				}
+				if(row["PriceType"]!=null && row["PriceType"].ToString()!="")
+				{
+					model.PriceType=int.Parse(row["PriceType"].ToString());
+				}
+				if(row["DistributionNum"]!=null)
+				{
+					model.DistributionNum=row["DistributionNum"].ToString();
 				}
 				if(row["WorkersId"]!=null && row["WorkersId"].ToString()!="")
 				{
@@ -249,7 +267,7 @@ namespace Leadin.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select Id,SonOrderId,TypeId,WorkersId,DistributionId,Price,Remark ");
+			strSql.Append("select Id,OrderId,TypeId,PriceType,DistributionNum,WorkersId,DistributionId,Price,Remark ");
 			strSql.Append(" FROM tb_OrdeDistribution ");
 			if(strWhere.Trim()!="")
 			{
@@ -269,7 +287,7 @@ namespace Leadin.DAL
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append(" Id,SonOrderId,TypeId,WorkersId,DistributionId,Price,Remark ");
+			strSql.Append(" Id,OrderId,TypeId,PriceType,DistributionNum,WorkersId,DistributionId,Price,Remark ");
 			strSql.Append(" FROM tb_OrdeDistribution ");
 			if(strWhere.Trim()!="")
 			{

@@ -6,7 +6,7 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2017/5/2 15:11:24   N/A    初版
+* V0.01  2017/5/16 11:39:03   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
@@ -28,8 +28,8 @@ namespace Leadin.BLL
 	/// </summary>
 	public partial class OrdeDistribution
 	{
-		private readonly IOrdeDistribution dal= DataAccess.CreateOrdeDistribution();
-        public OrdeDistribution()
+		private readonly IOrdeDistribution dal=DataAccess.CreateOrdeDistribution();
+		public OrdeDistribution()
 		{}
 		#region  BasicMethod
 
@@ -89,8 +89,6 @@ namespace Leadin.BLL
 			
 			return dal.GetModel(Id);
 		}
-
-
 
 		/// <summary>
 		/// 获得数据列表

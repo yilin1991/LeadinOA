@@ -6,7 +6,7 @@
 *
 * Ver    变更日期             负责人  变更内容
 * ───────────────────────────────────
-* V0.01  2017/5/2 15:11:21   N/A    初版
+* V0.01  2017/5/16 12:01:50   N/A    初版
 *
 * Copyright (c) 2012 Maticsoft Corporation. All rights reserved.
 *┌──────────────────────────────────┐
@@ -27,12 +27,13 @@ namespace Leadin.Model
 		{}
 		#region Model
 		private int _id;
-		private string _numid;
 		private string _companyname;
 		private string _nameinfo;
 		private string _contacttel;
 		private string _selecttel;
 		private decimal _price=0M;
+		private int _sortnum=10000;
+		private int _stateinfo=0;
 		private string _remark;
 		/// <summary>
 		/// 
@@ -41,14 +42,6 @@ namespace Leadin.Model
 		{
 			set{ _id=value;}
 			get{return _id;}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		public string NumId
-		{
-			set{ _numid=value;}
-			get{return _numid;}
 		}
 		/// <summary>
 		/// 
@@ -89,6 +82,22 @@ namespace Leadin.Model
 		{
 			set{ _price=value;}
 			get{return _price;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public int SortNum
+		{
+			set{ _sortnum=value;}
+			get{return _sortnum;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public int StateInfo
+		{
+			set{ _stateinfo=value;}
+			get{return _stateinfo;}
 		}
 		/// <summary>
 		/// 
