@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="Leadin.OA.oasystem.oaorder.index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="sonindex.aspx.cs" Inherits="Leadin.OA.oasystem.oaorder.sonindex" %>
 
 <%@ Register Src="~/Controls/Header.ascx" TagPrefix="uc1" TagName="Header" %>
 <%@ Register Src="~/Controls/Left.ascx" TagPrefix="uc1" TagName="Left" %>
@@ -46,25 +46,26 @@
 
                     <div class="tpl-block">
                         <div class="am-g">
-                            <div class="am-u-sm-12 am-u-md-4">
+                            <div class="am-u-sm-12 am-u-md-6">
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
                                         <asp:LinkButton runat="server" ID="lbtnAdd" CssClass="am-btn am-btn-default am-btn-success" OnClick="lbtnAdd_Click"><span class="am-icon-plus"></span> 新增</asp:LinkButton>
-                                        <asp:LinkButton runat="server" ID="lbtnMoney" CssClass="am-btn am-btn-default am-btn-danger" OnClick="lbtnMoney_Click"><span class="am-icon-plus"></span> 标记为已付款</asp:LinkButton>
+                                        <asp:LinkButton runat="server" ID="lbtnBackOrder" CssClass="am-btn am-btn-default am-btn-danger" OnClick="lbtnBackOrder_Click">返回公司订单</asp:LinkButton>
+                                       
                                     </div>
                                 </div>
                             </div>
-                            <div class="am-u-sm-12 am-u-md-5">
-                                <div class="am-form-group am-btn-group-xs">
-                                   
-                                    <asp:DropDownList runat="server" ID="ddlStateInfo" data-am-selected="{btnSize: 'sm'}">
-                                        <asp:ListItem Value="">订单状态</asp:ListItem>
-                                    </asp:DropDownList>
-                                    
-
-
-                                     <asp:LinkButton runat="server" ID="lbtnState" CssClass="am-btn am-btn-default am-btn-danger" OnClick="lbtnState_Click"><span class="am-icon-plus"></span> 修改订单状态</asp:LinkButton>
-
+                            <div class="am-u-sm-12 am-u-md-3">
+                                <div class="am-form-group">
+                                    <select data-am-selected="{btnSize: 'sm'}">
+                                        <option value="option1">所有类别</option>
+                                        <option value="option2">IT业界</option>
+                                        <option value="option3">数码产品</option>
+                                        <option value="option3">笔记本电脑</option>
+                                        <option value="option3">平板电脑</option>
+                                        <option value="option3">只能手机</option>
+                                        <option value="option3">超极本</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="am-u-sm-12 am-u-md-3">
@@ -88,16 +89,19 @@
                                                         <input type="checkbox" id="ckCheckAll"></th>
                                                     <th class="table-numid">订单编号</th>
                                                     <th class="table-author">公司名称</th>
-                                                    <th class="table-author">收货信息</th>
-                                                    <th class="table-author">配送方式</th>
-                                                    <th class="table-author">配送人</th>
-                                                    <th class="table-author">配送单号</th>
-                                                    <th class="table-author">快递费用</th>
+                                                    <th class="table-author">客户名称</th>
+                                                    <th class="table-author">纸张</th>
+                                                    <th class="table-author">数量</th>
+                                                    <th class="table-author">公版</th>
+                                                    <th class="table-author">类型</th>
+                                                    <th class="table-author">工艺</th>
+                                                    <th class="table-author">差价</th>
+                                                    <th class="table-author">差价说明</th>
                                                     <th class="table-author">订单金额</th>
-                                                    <th class="table-author">货款状态</th>
-                                                     <th class="table-author">订单状态</th>
-                                                     <th class="table-author">添加时间</th>
-                                                    <th class="table-set">操作</th>
+                                                    <th class="table-author">订单状态</th>
+                                                    <th class="table-author">下单员</th>
+                                                    <th class="table-author">下单时间</th>
+                                                    <th class="table-set" style="width:350px;">操作</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -108,28 +112,56 @@
                                                             <td>
                                                                 <asp:CheckBox runat="server" ID="ckChecked" />
                                                             </td>
-                                                            <td><%# Eval("NumId") %>
-                                                                <asp:HiddenField runat="server" ID="hidfid" Value='<%# Eval("Id") %>' />
-                                                            </td>
-                                                            <td><%# GetCustomerName(int.Parse(Eval("CustomerId").ToString())) %></td>
-                                                            <td><%# GetAddressDetail(Eval("AddressId").ToString()) %></td>
-
-                                                            <td><%#  GetDisDistribution(int.Parse(Eval("Id").ToString()))[0] %></td>
-                                                            <td><%#  GetDisDistribution(int.Parse(Eval("Id").ToString()))[1]%></td>
-                                                            <td><%#  GetDisDistribution(int.Parse(Eval("Id").ToString()))[2] %></td>
-                                                            <td><%#  GetDisDistribution(int.Parse(Eval("Id").ToString()))[3] %></td>
-
-                                                            <td><%# GetFathrtMoney(int.Parse(Eval("Id").ToString())).ToString("0.00")+" 元" %></td>
-                                                            <td><%# Eval("MoneyState").ToString()=="1"?"已付款":"未付款" %></td>
-                                                            <td><%# GetCategoryName(int.Parse(Eval("StateInfo").ToString())) %></td>
-                                                             <td><%# Convert.ToDateTime(Eval("AddTime").ToString()).ToString("yyyy-MM-dd") %></td>
                                                             <td>
+                                                                <%# Eval("NumId") %>
+                                                                <asp:HiddenField runat="server" ID="hidid" Value='<%# Eval("Id") %>' />
+                                                            </td>
+                                                            <td>
+                                                              <%# GetCompany(int.Parse(Eval("CustomerID").ToString()))  %>
+                                                          </td>
+                                                            <td>
+                                                              <%# GetCustomerName(int.Parse(Eval("CustomerID").ToString()))  %>
+                                                          </td>
+                                                            <td>
+                                                              <%# GetPaperName(int.Parse(Eval("PaperId").ToString()))  %>
+                                                          </td>
+                                                            <td>
+                                                              <%#Eval("Num").ToString()+"盒/100张" %>
+                                                          </td>
+                                                            <td>
+                                                              <%#GetCustomerName(Eval("PublicVersionId").ToString()) %>
+                                                          </td>
+                                                            <td>
+                                                              <%#GetCategoryName(int.Parse(Eval("TypeId").ToString())) %>
+                                                          </td>
+                                                            <td>
+                                                              <%#GetTechnology(int.Parse(Eval("Id").ToString())) %>
+                                                          </td>
+                                                            <td>
+                                                              <%#Convert.ToDecimal(Eval("DifferencePrice").ToString()).ToString("0.00")+" 元" %>
+                                                          </td>
+                                                            <td>
+                                                              <%#Eval("DifferenceReason").ToString()==""?"--":Eval("DifferenceReason").ToString() %>
+                                                          </td>
+                                                            <td>
+                                                             <%# GetSonOrderMoney(int.Parse(Eval("Id").ToString())).ToString("0.00")+" 元" %>
+                                                          </td>
+                                                            <td>
+                                                             <%# GetCategoryName(int.Parse(Eval("StateInfo").ToString())) %>
+                                                          </td>
+                                                            <td>
+                                                             <%# GetWorkerName(int.Parse(Eval("WorkersId").ToString())) %>
+                                                          </td>
+                                                            <td>
+                                                             <%# Eval("AddTime") %>
+                                                          </td>
+                                                            <td >
                                                                 <div class="am-btn-toolbar">
                                                                     <div class="am-btn-group am-btn-group-xs">
 
 
-                                                                        <asp:LinkButton runat="server" ID="lbtnDistribution" CommandName="lbtnDistribution" CssClass="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</asp:LinkButton>
-                                                                        <asp:LinkButton runat="server" ID="lbtnSonOrder" CommandName="lbtnSonOrder" CssClass="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-trash-o"></span> 子订单</asp:LinkButton>
+                                                                        <asp:LinkButton runat="server" ID="lbtnedit" CommandName="lbtnedit" CssClass="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑订单</asp:LinkButton>
+                                                                        
                                                                     </div>
                                                                 </div>
                                                             </td>

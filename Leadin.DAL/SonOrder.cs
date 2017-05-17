@@ -63,9 +63,9 @@ namespace Leadin.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into tb_SonOrder(");
-			strSql.Append("NumId,PaperId,Num,PublicVersionId,TypeId,StateInfo,WorkersId,FatherOrderId,AddTime,DifferencePrice,DifferenceReason,Explain,Remark)");
+			strSql.Append("NumId,PaperId,Num,PublicVersionId,TypeId,StateInfo,WorkersId,FatherOrderId,AddTime,DifferencePrice,DifferenceReason,Explain,Remark,CustomerID)");
 			strSql.Append(" values (");
-			strSql.Append("@NumId,@PaperId,@Num,@PublicVersionId,@TypeId,@StateInfo,@WorkersId,@FatherOrderId,@AddTime,@DifferencePrice,@DifferenceReason,@Explain,@Remark)");
+			strSql.Append("@NumId,@PaperId,@Num,@PublicVersionId,@TypeId,@StateInfo,@WorkersId,@FatherOrderId,@AddTime,@DifferencePrice,@DifferenceReason,@Explain,@Remark,@CustomerID)");
 			strSql.Append(";select @@IDENTITY");
 			SqlParameter[] parameters = {
 					new SqlParameter("@NumId", SqlDbType.NVarChar,100),
@@ -80,7 +80,7 @@ namespace Leadin.DAL
 					new SqlParameter("@DifferencePrice", SqlDbType.Decimal,9),
 					new SqlParameter("@DifferenceReason", SqlDbType.NVarChar,1000),
 					new SqlParameter("@Explain", SqlDbType.NText),
-					new SqlParameter("@Remark", SqlDbType.NText)};
+					new SqlParameter("@Remark", SqlDbType.NText),new SqlParameter("@CustomerID",SqlDbType.Int,4)};
 			parameters[0].Value = model.NumId;
 			parameters[1].Value = model.PaperId;
 			parameters[2].Value = model.Num;
@@ -94,7 +94,7 @@ namespace Leadin.DAL
 			parameters[10].Value = model.DifferenceReason;
 			parameters[11].Value = model.Explain;
 			parameters[12].Value = model.Remark;
-
+            parameters[13].Value = model.CustomerID;
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);
 			if (obj == null)
 			{
@@ -124,7 +124,7 @@ namespace Leadin.DAL
 			strSql.Append("DifferencePrice=@DifferencePrice,");
 			strSql.Append("DifferenceReason=@DifferenceReason,");
 			strSql.Append("Explain=@Explain,");
-			strSql.Append("Remark=@Remark");
+			strSql.Append("Remark=@Remark,CustomerID=@CustomerID");
 			strSql.Append(" where Id=@Id");
 			SqlParameter[] parameters = {
 					new SqlParameter("@NumId", SqlDbType.NVarChar,100),
@@ -140,6 +140,7 @@ namespace Leadin.DAL
 					new SqlParameter("@DifferenceReason", SqlDbType.NVarChar,1000),
 					new SqlParameter("@Explain", SqlDbType.NText),
 					new SqlParameter("@Remark", SqlDbType.NText),
+                    new SqlParameter("@CustomerID",SqlDbType.Int,4),
 					new SqlParameter("@Id", SqlDbType.Int,4)};
 			parameters[0].Value = model.NumId;
 			parameters[1].Value = model.PaperId;
@@ -154,7 +155,8 @@ namespace Leadin.DAL
 			parameters[10].Value = model.DifferenceReason;
 			parameters[11].Value = model.Explain;
 			parameters[12].Value = model.Remark;
-			parameters[13].Value = model.Id;
+            parameters[13].Value = model.CustomerID;
+			parameters[14].Value = model.Id;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -218,7 +220,7 @@ namespace Leadin.DAL
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select  top 1 Id,NumId,PaperId,Num,PublicVersionId,TypeId,StateInfo,WorkersId,FatherOrderId,AddTime,DifferencePrice,DifferenceReason,Explain,Remark from tb_SonOrder ");
+			strSql.Append("select  top 1 Id,NumId,PaperId,Num,PublicVersionId,TypeId,StateInfo,WorkersId,FatherOrderId,AddTime,DifferencePrice,DifferenceReason,Explain,Remark,CustomerID from tb_SonOrder ");
 			strSql.Append(" where Id=@Id");
 			SqlParameter[] parameters = {
 					new SqlParameter("@Id", SqlDbType.Int,4)
@@ -301,8 +303,14 @@ namespace Leadin.DAL
 				if(row["Remark"]!=null)
 				{
 					model.Remark=row["Remark"].ToString();
-				}
-			}
+                }
+                if (row["CustomerID"] != null && row["CustomerID"].ToString() != "")
+                {
+                    model.CustomerID = int.Parse(row["CustomerID"].ToString());
+                }
+                
+
+            }
 			return model;
 		}
 
@@ -312,7 +320,7 @@ namespace Leadin.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select Id,NumId,PaperId,Num,PublicVersionId,TypeId,StateInfo,WorkersId,FatherOrderId,AddTime,DifferencePrice,DifferenceReason,Explain,Remark ");
+			strSql.Append("select Id,NumId,PaperId,Num,PublicVersionId,TypeId,StateInfo,WorkersId,FatherOrderId,AddTime,DifferencePrice,DifferenceReason,Explain,Remark,CustomerID ");
 			strSql.Append(" FROM tb_SonOrder ");
 			if(strWhere.Trim()!="")
 			{
@@ -332,7 +340,7 @@ namespace Leadin.DAL
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append(" Id,NumId,PaperId,Num,PublicVersionId,TypeId,StateInfo,WorkersId,FatherOrderId,AddTime,DifferencePrice,DifferenceReason,Explain,Remark ");
+			strSql.Append(" Id,NumId,PaperId,Num,PublicVersionId,TypeId,StateInfo,WorkersId,FatherOrderId,AddTime,DifferencePrice,DifferenceReason,Explain,Remark,CustomerID ");
 			strSql.Append(" FROM tb_SonOrder ");
 			if(strWhere.Trim()!="")
 			{

@@ -10,7 +10,7 @@
 namespace Leadin.OA.oasystem.oaorder {
     
     
-    public partial class index {
+    public partial class editfathrt {
         
         /// <summary>
         /// headerlink 控件。
@@ -49,58 +49,76 @@ namespace Leadin.OA.oasystem.oaorder {
         protected global::Leadin.OA.Controls.Left Left;
         
         /// <summary>
-        /// lbtnAdd 控件。
+        /// ddlCustomer 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnAdd;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCustomer;
         
         /// <summary>
-        /// lbtnMoney 控件。
+        /// ddlAddress 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnMoney;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAddress;
         
         /// <summary>
-        /// ddlStateInfo 控件。
+        /// ddlDelivery 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlStateInfo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDelivery;
         
         /// <summary>
-        /// lbtnState 控件。
+        /// ddlDeliverystaff 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnState;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDeliverystaff;
         
         /// <summary>
-        /// btnSearch 控件。
+        /// txtDeliveryNum 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnSearch;
+        protected global::System.Web.UI.WebControls.TextBox txtDeliveryNum;
         
         /// <summary>
-        /// repList 控件。
+        /// ddlPriceType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repList;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPriceType;
+        
+        /// <summary>
+        /// txtExplain 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtExplain;
+        
+        /// <summary>
+        /// btnOK 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnOK;
         
         /// <summary>
         /// footerlink 控件。

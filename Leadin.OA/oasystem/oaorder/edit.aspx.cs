@@ -17,11 +17,12 @@ namespace Leadin.OA.oasystem.oaorder
         BLL.PublicVersion bllPublicversion = new BLL.PublicVersion();
         BLL.Technology bllTechnology = new BLL.Technology();
 
+        BLL.Distribution bllDistribution = new BLL.Distribution();
 
         BLL.FatherOrder bllFathrt = new BLL.FatherOrder();
         BLL.SonOrder bllSonOrder = new BLL.SonOrder();
         BLL.OrdeTechnology bllOrderTechnology = new BLL.OrdeTechnology();
-        BLL.OrdeDistribution bllDistribution = new BLL.OrdeDistribution();
+        BLL.OrdeDistribution bllOrderDistribution = new BLL.OrdeDistribution();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -107,13 +108,24 @@ namespace Leadin.OA.oasystem.oaorder
         protected void btnOK_Click(object sender, EventArgs e)
         {
 
-            int fathrtId = AddFathrtNum();
+            //try
+            //{
 
-            if (fathrtId > 0)
-            {
+                int fathrtId = AddFathrtNum();
 
-            }
+                if (fathrtId > 0)
+                {
+                    int sonId = AddSonOrder(fathrtId);
+                    AddDistribution(fathrtId);
+                    AddTechnology(sonId);
+                }
 
+                JsMessage("订单提交成功", 2000, "true","index.aspx");
+            //}
+            //catch {
+            //    JsMessage("订单提交失败，请检查您的输入", 2000, "false");
+
+            //}
 
 
         }
@@ -179,6 +191,7 @@ namespace Leadin.OA.oasystem.oaorder
             model.Num = decimal.Parse(txtNum.Text);
             model.NumId = SetSonNumID(fathrtId);
             model.PaperId = int.Parse(ddlPaper.SelectedValue);
+            model.CustomerID = int.Parse(ddlCustomer.SelectedValue);
             if (!string.IsNullOrEmpty(ddlPublicversion.SelectedValue))
             {
                 model.PublicVersionId = int.Parse(ddlPublicversion.SelectedValue);
@@ -226,12 +239,35 @@ namespace Leadin.OA.oasystem.oaorder
         /// <summary>
         /// 添加订单配送信息
         /// </summary>
-        /// <param name="fathrtid"></param>
+        /// <param name="fathrtid">公司订单编号</param>
         void AddDistribution(int fathrtid)
         {
             Model.OrdeDistribution model = new Model.OrdeDistribution();
+            model.OrderId = fathrtid;
+            model.PriceType = int.Parse(ddlPriceType.SelectedValue);
+            model.TypeId = int.Parse(ddlDelivery.SelectedValue);
+            model.WorkersId = int.Parse(Session["AdminId"].ToString());
+            model.Price = 0;
+            switch (ddlType.SelectedValue)
+            {
+                case "10018"://公司配送
+                    if (!string.IsNullOrEmpty(ddlDeliverystaff.SelectedValue))
+                    {
+                        model.WorkersId = int.Parse(ddlDeliverystaff.SelectedValue);
+                    }
+                    break;
+                case "10019"://快递信息
+                    if (!string.IsNullOrEmpty(ddlDeliverystaff.SelectedValue))
+                    {
+                        model.DistributionId = int.Parse(ddlDeliverystaff.SelectedValue);
+                        Model.Distribution modelDis = bllDistribution.GetModel(int.Parse(ddlDeliverystaff.SelectedValue));
+                        model.Price = modelDis.Price;
+                    }
+                    break;
+            }
 
-          
+
+            bllOrderDistribution.Add(model);
 
         }
 
@@ -280,7 +316,7 @@ namespace Leadin.OA.oasystem.oaorder
             }
             else
             {
-                strNumId.Append("0001");
+                strNumId.Append("001");
             }
             return strNumId.ToString();
 

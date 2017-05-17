@@ -10,7 +10,7 @@
 namespace Leadin.OA.oasystem.oaorder {
     
     
-    public partial class index {
+    public partial class sonindex {
         
         /// <summary>
         /// headerlink 控件。
@@ -58,31 +58,13 @@ namespace Leadin.OA.oasystem.oaorder {
         protected global::System.Web.UI.WebControls.LinkButton lbtnAdd;
         
         /// <summary>
-        /// lbtnMoney 控件。
+        /// lbtnBackOrder 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnMoney;
-        
-        /// <summary>
-        /// ddlStateInfo 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlStateInfo;
-        
-        /// <summary>
-        /// lbtnState 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnState;
+        protected global::System.Web.UI.WebControls.LinkButton lbtnBackOrder;
         
         /// <summary>
         /// btnSearch 控件。

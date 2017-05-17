@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="edit.aspx.cs" EnableEventValidation="false"  Inherits="Leadin.OA.oasystem.oaorder.edit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="editfathrt.aspx.cs" EnableEventValidation="false" Inherits="Leadin.OA.oasystem.oaorder.editfathrt" %>
 
 <%@ Register Src="~/Controls/Header.ascx" TagPrefix="uc1" TagName="Header" %>
 <%@ Register Src="~/Controls/Left.ascx" TagPrefix="uc1" TagName="Left" %>
@@ -52,68 +52,12 @@
                                     <div class="am-form-group">
                                         <label for="ddlCustomer" class="am-u-sm-2 am-form-label">下单客户</label>
                                         <div class="am-u-sm-10">
-                                            <asp:DropDownList runat="server" ID="ddlCustomer" datatype="*" nullmsg="请选择下单客户！">
+                                            <asp:DropDownList runat="server" ID="ddlCustomer" datatype="*" nullmsg="请选择下单客户！" ajaxurl='' >
                                                 <asp:ListItem Value="">请选择下单客户</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                     </div>
 
-                                    <div class="am-form-group">
-                                        <label for="ddlType" class="am-u-sm-2 am-form-label">订单类别</label>
-                                        <div class="am-u-sm-10">
-                                            <asp:DropDownList runat="server" ID="ddlType" datatype="*" nullmsg="请选择订单类别！">
-                                                <asp:ListItem Value="">请选择下单客户</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                    <div class="am-form-group">
-                                        <label for="ddlPaper" class="am-u-sm-2 am-form-label">印刷纸张</label>
-                                        <div class="am-u-sm-10">
-                                            <asp:DropDownList runat="server" ID="ddlPaper" datatype="*" nullmsg="请选择印刷纸张！">
-                                                <asp:ListItem Value="">请选择印刷纸张</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                    <div class="am-form-group">
-                                        <label for="txtNum" class="am-u-sm-2 am-form-label">印刷数量</label>
-                                        <div class="am-u-sm-10">
-                                            <asp:TextBox runat="server" ID="txtNum" placeholder="请输入印刷数量，每盒100张" Text="2.00" datatype="price" nullmsg="印刷数量不能为空！" errormsg="请输入正确的印刷数量！"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="am-form-group">
-                                        <label for="ddlPublicversion" class="am-u-sm-2 am-form-label">客户公版</label>
-                                        <div class="am-u-sm-10">
-                                            <asp:DropDownList runat="server" ID="ddlPublicversion" >
-                                                <asp:ListItem Value="">请选择客户公版</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                    <div class="am-form-group">
-                                        <label for="user-QQ" class="am-u-sm-2 am-form-label">订单工艺</label>
-                                        <div class="am-u-sm-10">
-
-                                            <asp:Repeater runat="server" ID="repTechnology">
-                                                <ItemTemplate>
-                                                    <div class="technologylist">
-                                                        <span class="technology"><%# Eval("NameInfo") %></span>
-                                                        <asp:HiddenField runat="server" ID="hidId" Value='<%# Eval("Id") %>' />
-
-                                                        <asp:Repeater runat="server" ID="repSubTechnology">
-                                                            <ItemTemplate>
-                                                                <label class="am-checkbox-inline">
-                                                                    <asp:CheckBox runat="server" ID="ckTechnology" />
-                                                                    <%# Eval("NameInfo") %>
-                                                                </label>
-                                                                <asp:HiddenField runat="server" ID="hidsubId" Value='<%# Eval("Id") %>' />
-                                                                <asp:HiddenField runat="server" ID="hidPrice" Value='<%# Eval("Price") %>' />
-                                                            </ItemTemplate>
-                                                        </asp:Repeater>
-
-                                                    </div>
-                                                </ItemTemplate>
-                                            </asp:Repeater>
-                                        </div>
-                                    </div>
                                     <div class="am-form-group">
                                         <label for="ddlAddress" class="am-u-sm-2 am-form-label">收货信息</label>
                                         <div class="am-u-sm-10">
@@ -139,27 +83,23 @@
                                             </asp:DropDownList>
                                         </div>
                                     </div>
+
+                                     <div class="am-form-group">
+                                        <label for="txtDeliveryNum" class="am-u-sm-2 am-form-label">配送单号</label>
+                                        <div class="am-u-sm-10">
+                                            <asp:TextBox runat="server" ID="txtDeliveryNum" placeholder="请输入配送单号" ></asp:TextBox>
+                                        </div>
+                                    </div>
                                     <div class="am-form-group">
                                         <label for="ddlPriceType" class="am-u-sm-2 am-form-label">快递费</label>
                                         <div class="am-u-sm-10">
                                             <asp:DropDownList runat="server" ID="ddlPriceType" datatype="*" nullmsg="请选择配送方式！">
-                                                <asp:ListItem Value="0">先付费</asp:ListItem>
+                                                <asp:ListItem Value="0">非到付</asp:ListItem>
                                                 <asp:ListItem Value="1">到付</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                     </div>
-                                    <div class="am-form-group">
-                                        <label for="txtDifferencePrice" class="am-u-sm-2 am-form-label">订单差价</label>
-                                        <div class="am-u-sm-10">
-                                            <asp:TextBox runat="server" ID="txtDifferencePrice" placeholder="请输入订单差价，支持正负差价" datatype="price" errormsg="请输入正确的订单差价金额！"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="am-form-group">
-                                        <label for="txtDifferenceReason" class="am-u-sm-2 am-form-label">差价说明</label>
-                                        <div class="am-u-sm-10">
-                                            <asp:TextBox runat="server" ID="txtDifferenceReason" TextMode="MultiLine" Rows="5" placeholder="请输入类别的简介，选填"></asp:TextBox>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="am-form-group">
                                         <label for="txtExplain" class="am-u-sm-2 am-form-label">订单说明</label>
                                         <div class="am-u-sm-10">
@@ -188,6 +128,10 @@
         <script>
 
             $(function () {
+
+                
+                $("#ddlCustomer").attr("ajaxurl", "<%= checkorder%>");
+
 
                 var demo = $("#myform").Validform({
 

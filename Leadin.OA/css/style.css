@@ -40,3 +40,12 @@
     }
 
         .am-checkbox input[type=checkbox], .am-checkbox-inline input[type=checkbox], .am-radio input[type=radio], .am-radio-inline input[type=radio]{margin-left:-18px;margin-top:2px;}
+
+.am-btn-toolbar .am-btn-group .am-btn{display:block;float:left;}
+
+
+
+
+
+
+

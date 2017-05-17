@@ -10,13 +10,13 @@ using System.Web.UI.WebControls;
 
 namespace Leadin.Web.UI
 {
-    public class ManagePage:System.Web.UI.Page
+    public class ManagePage : System.Web.UI.Page
     {
 
         public ManagePage()
         {
             this.Load += new EventHandler(ManagePage_Load);
-          
+
         }
 
         void ManagePage_Load(object sender, EventArgs e)
@@ -37,10 +37,10 @@ namespace Leadin.Web.UI
         /// <returns></returns>
         public bool CheckLogin()
         {
-           
 
 
-            if (Session["AdminId"] != null && Session["AdminAccount"] != null )
+
+            if (Session["AdminId"] != null && Session["AdminAccount"] != null)
             {
                 return true;
             }
@@ -152,6 +152,76 @@ namespace Leadin.Web.UI
             return cName;
         }
 
+
+
+        /// <summary>
+        /// 获取子订单费用
+        /// </summary>
+        /// <param name="sonId"></param>
+        /// <returns></returns>
+        public decimal GetSonOrderMoney(int sonId)
+        {
+            BLL.SonOrder bllSonorder = new BLL.SonOrder();
+            BLL.Paper bllPaper = new BLL.Paper();
+            BLL.OrdeTechnology bllTechnology = new BLL.OrdeTechnology();
+
+
+            decimal money = 0;
+
+            Model.SonOrder modelOrder = bllSonorder.GetModel(sonId);
+
+            Model.Paper modelPaper = bllPaper.GetModel(int.Parse(modelOrder.PaperId.ToString()));
+
+            DataSet ds = bllTechnology.GetList("SonOrderId=" + sonId);
+
+
+            foreach (DataRow item in ds.Tables[0].Rows)
+            {
+                money += decimal.Parse(item["Price"].ToString());
+            }
+
+            money += modelOrder.DifferencePrice;
+            money += modelPaper.Price;
+            return money;
+
+        }
+
+
+        /// <summary>
+        /// 获取公司订单总金额
+        /// </summary>
+        /// <param name="fathrtId"></param>
+        /// <returns></returns>
+        public decimal GetFathrtMoney(int fathrtId)
+        {
+
+
+            decimal money = 0;
+
+            BLL.OrdeDistribution bllDistrbution = new BLL.OrdeDistribution();
+            BLL.SonOrder bllSonOrder = new BLL.SonOrder();
+
+            DataSet dsDistubution = bllDistrbution.GetList("OrderId=" + fathrtId);
+            DataSet dsSonOrder = bllSonOrder.GetList("FatherOrderId=" + fathrtId);
+
+            if (dsSonOrder.Tables[0].Rows.Count > 0)
+            {
+
+                foreach (DataRow item in dsSonOrder.Tables[0].Rows)
+                {
+
+                    money += GetSonOrderMoney(int.Parse(item["Id"].ToString()));
+
+                }
+
+                if (dsDistubution.Tables[0].Rows.Count > 0)
+                {
+                    money += decimal.Parse(dsDistubution.Tables[0].Rows[0]["Price"].ToString());
+                }
+            }
+
+            return money;
+        }
 
 
 

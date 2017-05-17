@@ -98,8 +98,12 @@ namespace Leadin.Model
 			set{ _addtime=value;}
 			get{return _addtime;}
 		}
-		#endregion Model
 
-	}
+
+        public int MoneyState { get; set; }
+
+        #endregion Model
+
+    }
 }
 

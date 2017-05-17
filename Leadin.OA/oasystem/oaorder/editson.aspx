@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="edit.aspx.cs" EnableEventValidation="false"  Inherits="Leadin.OA.oasystem.oaorder.edit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="editson.aspx.cs" EnableEventValidation="false"  Inherits="Leadin.OA.oasystem.oaorder.editson" %>
 
 <%@ Register Src="~/Controls/Header.ascx" TagPrefix="uc1" TagName="Header" %>
 <%@ Register Src="~/Controls/Left.ascx" TagPrefix="uc1" TagName="Left" %>
@@ -62,7 +62,7 @@
                                         <label for="ddlType" class="am-u-sm-2 am-form-label">订单类别</label>
                                         <div class="am-u-sm-10">
                                             <asp:DropDownList runat="server" ID="ddlType" datatype="*" nullmsg="请选择订单类别！">
-                                                <asp:ListItem Value="">请选择下单客户</asp:ListItem>
+                                                <asp:ListItem Value="">请选择订单类别</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                     </div>
@@ -77,7 +77,7 @@
                                     <div class="am-form-group">
                                         <label for="txtNum" class="am-u-sm-2 am-form-label">印刷数量</label>
                                         <div class="am-u-sm-10">
-                                            <asp:TextBox runat="server" ID="txtNum" placeholder="请输入印刷数量，每盒100张" Text="2.00" datatype="price" nullmsg="印刷数量不能为空！" errormsg="请输入正确的印刷数量！"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtNum" placeholder="请输入印刷数量，每盒100张" Text="2.0" datatype="printnum" nullmsg="印刷数量不能为空！" errormsg="请输入正确的印刷数量！"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="am-form-group">
@@ -114,40 +114,7 @@
                                             </asp:Repeater>
                                         </div>
                                     </div>
-                                    <div class="am-form-group">
-                                        <label for="ddlAddress" class="am-u-sm-2 am-form-label">收货信息</label>
-                                        <div class="am-u-sm-10">
-                                            <asp:DropDownList runat="server" ID="ddlAddress">
-                                                <asp:ListItem Value="">请选择收货地址</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
 
-                                    <div class="am-form-group">
-                                        <label for="ddlDelivery" class="am-u-sm-2 am-form-label">配送方式</label>
-                                        <div class="am-u-sm-10">
-                                            <asp:DropDownList runat="server" ID="ddlDelivery" datatype="*" nullmsg="请选择配送方式！">
-                                                <asp:ListItem Value="">请选择配送方式</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                    <div class="am-form-group">
-                                        <label for="ddlDeliverystaff" class="am-u-sm-2 am-form-label">配送人</label>
-                                        <div class="am-u-sm-10">
-                                            <asp:DropDownList runat="server" ID="ddlDeliverystaff" >
-                                                <asp:ListItem Value="">请选择配送人</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                    <div class="am-form-group">
-                                        <label for="ddlPriceType" class="am-u-sm-2 am-form-label">快递费</label>
-                                        <div class="am-u-sm-10">
-                                            <asp:DropDownList runat="server" ID="ddlPriceType" datatype="*" nullmsg="请选择配送方式！">
-                                                <asp:ListItem Value="0">先付费</asp:ListItem>
-                                                <asp:ListItem Value="1">到付</asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
                                     <div class="am-form-group">
                                         <label for="txtDifferencePrice" class="am-u-sm-2 am-form-label">订单差价</label>
                                         <div class="am-u-sm-10">
@@ -164,6 +131,12 @@
                                         <label for="txtExplain" class="am-u-sm-2 am-form-label">订单说明</label>
                                         <div class="am-u-sm-10">
                                             <asp:TextBox runat="server" ID="txtExplain" TextMode="MultiLine" Rows="5" placeholder="请输入类别的简介，选填"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                     <div class="am-form-group">
+                                        <label for="txtFileName" class="am-u-sm-2 am-form-label">文件名称</label>
+                                        <div class="am-u-sm-10">
+                                            <asp:TextBox runat="server" ID="txtFileName" TextMode="MultiLine" Rows="5" placeholder="请输入类别的简介，选填"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="am-form-group">
@@ -198,7 +171,7 @@
                     },
                     postonce: true,
                     datatype: {
-                        "price": /^[0-9]+(.[0-9]{2})?$/,
+                        "price": /^(-|)[0-9]+(.[0-9]{2})?$/,
                         "printnum": /^[0-9]+(.[0-9]{1})?$/
                     }
                 });

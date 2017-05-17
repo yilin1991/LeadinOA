@@ -37,7 +37,7 @@ namespace Leadin.OA.Tools
             {
                 dsAddress = blladdreess.GetList("StateInfo=1 and CustimerId=" + model.ParentId);
             }
-            strAddress.Append("<option value=''>请选择配送方式</option>");
+            strAddress.Append("<option value=''>请选择收货地址</option>");
 
             foreach (DataRow item in dsAddress.Tables[0].Rows)
             {

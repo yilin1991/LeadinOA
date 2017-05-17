@@ -10,7 +10,7 @@
 namespace Leadin.OA.oasystem.oaorder {
     
     
-    public partial class index {
+    public partial class editson {
         
         /// <summary>
         /// headerlink 控件。
@@ -49,58 +49,103 @@ namespace Leadin.OA.oasystem.oaorder {
         protected global::Leadin.OA.Controls.Left Left;
         
         /// <summary>
-        /// lbtnAdd 控件。
+        /// ddlCustomer 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnAdd;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCustomer;
         
         /// <summary>
-        /// lbtnMoney 控件。
+        /// ddlType 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnMoney;
+        protected global::System.Web.UI.WebControls.DropDownList ddlType;
         
         /// <summary>
-        /// ddlStateInfo 控件。
+        /// ddlPaper 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlStateInfo;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPaper;
         
         /// <summary>
-        /// lbtnState 控件。
+        /// txtNum 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnState;
+        protected global::System.Web.UI.WebControls.TextBox txtNum;
         
         /// <summary>
-        /// btnSearch 控件。
+        /// ddlPublicversion 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnSearch;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPublicversion;
         
         /// <summary>
-        /// repList 控件。
+        /// repTechnology 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repList;
+        protected global::System.Web.UI.WebControls.Repeater repTechnology;
+        
+        /// <summary>
+        /// txtDifferencePrice 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDifferencePrice;
+        
+        /// <summary>
+        /// txtDifferenceReason 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDifferenceReason;
+        
+        /// <summary>
+        /// txtExplain 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtExplain;
+        
+        /// <summary>
+        /// txtFileName 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFileName;
+        
+        /// <summary>
+        /// btnOK 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnOK;
         
         /// <summary>
         /// footerlink 控件。

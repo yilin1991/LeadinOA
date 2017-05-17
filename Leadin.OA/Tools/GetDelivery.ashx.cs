@@ -29,7 +29,7 @@ namespace Leadin.OA.Tools
             {
                 strDelivery.Append("<option value=''>请选择配送人员</option>");
                 BLL.Workers bll = new BLL.Workers();
-                DataSet ds = bll.GetList("StateInfo=1 and TypeId=10018");
+                DataSet ds = bll.GetList("StateInfo=1 and TypeId=10027");
                
                 foreach (DataRow item in ds.Tables[0].Rows)
                 {

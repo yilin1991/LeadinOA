@@ -63,9 +63,9 @@ namespace Leadin.DAL
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("insert into tb_FatherOrder(");
-			strSql.Append("NumId,CustomerId,AddressId,WorkersId,StateInfo,Remark,AddTime)");
+			strSql.Append("NumId,CustomerId,AddressId,WorkersId,StateInfo,Remark,AddTime,MoneyState)");
 			strSql.Append(" values (");
-			strSql.Append("@NumId,@CustomerId,@AddressId,@WorkersId,@StateInfo,@Remark,@AddTime)");
+			strSql.Append("@NumId,@CustomerId,@AddressId,@WorkersId,@StateInfo,@Remark,@AddTime,@MoneyState)");
 			strSql.Append(";select @@IDENTITY");
 			SqlParameter[] parameters = {
 					new SqlParameter("@NumId", SqlDbType.NVarChar,100),
@@ -74,7 +74,7 @@ namespace Leadin.DAL
 					new SqlParameter("@WorkersId", SqlDbType.Int,4),
 					new SqlParameter("@StateInfo", SqlDbType.Int,4),
 					new SqlParameter("@Remark", SqlDbType.NText),
-					new SqlParameter("@AddTime", SqlDbType.DateTime)};
+					new SqlParameter("@AddTime", SqlDbType.DateTime),new SqlParameter("@MoneyState",SqlDbType.Int,4)};
 			parameters[0].Value = model.NumId;
 			parameters[1].Value = model.CustomerId;
 			parameters[2].Value = model.AddressId;
@@ -82,7 +82,7 @@ namespace Leadin.DAL
 			parameters[4].Value = model.StateInfo;
 			parameters[5].Value = model.Remark;
 			parameters[6].Value = model.AddTime;
-
+            parameters[7].Value = model.MoneyState;
 			object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);
 			if (obj == null)
 			{
@@ -106,7 +106,7 @@ namespace Leadin.DAL
 			strSql.Append("WorkersId=@WorkersId,");
 			strSql.Append("StateInfo=@StateInfo,");
 			strSql.Append("Remark=@Remark,");
-			strSql.Append("AddTime=@AddTime");
+			strSql.Append("AddTime=@AddTime,MoneyState=@MoneyState");
 			strSql.Append(" where Id=@Id");
 			SqlParameter[] parameters = {
 					new SqlParameter("@NumId", SqlDbType.NVarChar,100),
@@ -116,6 +116,7 @@ namespace Leadin.DAL
 					new SqlParameter("@StateInfo", SqlDbType.Int,4),
 					new SqlParameter("@Remark", SqlDbType.NText),
 					new SqlParameter("@AddTime", SqlDbType.DateTime),
+                    new SqlParameter("@MoneyState",SqlDbType.Int,4),
 					new SqlParameter("@Id", SqlDbType.Int,4)};
 			parameters[0].Value = model.NumId;
 			parameters[1].Value = model.CustomerId;
@@ -124,7 +125,8 @@ namespace Leadin.DAL
 			parameters[4].Value = model.StateInfo;
 			parameters[5].Value = model.Remark;
 			parameters[6].Value = model.AddTime;
-			parameters[7].Value = model.Id;
+            parameters[7].Value = model.MoneyState;
+			parameters[8].Value = model.Id;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -188,7 +190,7 @@ namespace Leadin.DAL
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select  top 1 Id,NumId,CustomerId,AddressId,WorkersId,StateInfo,Remark,AddTime from tb_FatherOrder ");
+			strSql.Append("select  top 1 Id,NumId,CustomerId,AddressId,WorkersId,StateInfo,Remark,AddTime,MoneyState from tb_FatherOrder ");
 			strSql.Append(" where Id=@Id");
 			SqlParameter[] parameters = {
 					new SqlParameter("@Id", SqlDbType.Int,4)
@@ -248,7 +250,13 @@ namespace Leadin.DAL
 				{
 					model.AddTime=DateTime.Parse(row["AddTime"].ToString());
 				}
-			}
+                if (row["MoneyState"] != null && row["MoneyState"].ToString() != "")
+                {
+                    model.MoneyState = int.Parse(row["MoneyState"].ToString());
+                }
+                
+
+            }
 			return model;
 		}
 
@@ -258,7 +266,7 @@ namespace Leadin.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select Id,NumId,CustomerId,AddressId,WorkersId,StateInfo,Remark,AddTime ");
+			strSql.Append("select Id,NumId,CustomerId,AddressId,WorkersId,StateInfo,Remark,AddTime,MoneyState ");
 			strSql.Append(" FROM tb_FatherOrder ");
 			if(strWhere.Trim()!="")
 			{
@@ -278,7 +286,7 @@ namespace Leadin.DAL
 			{
 				strSql.Append(" top "+Top.ToString());
 			}
-			strSql.Append(" Id,NumId,CustomerId,AddressId,WorkersId,StateInfo,Remark,AddTime ");
+			strSql.Append(" Id,NumId,CustomerId,AddressId,WorkersId,StateInfo,Remark,AddTime,MoneyState ");
 			strSql.Append(" FROM tb_FatherOrder ");
 			if(strWhere.Trim()!="")
 			{

@@ -152,8 +152,10 @@ namespace Leadin.Model
 			set{ _remark=value;}
 			get{return _remark;}
 		}
-		#endregion Model
 
-	}
+        public int CustomerID { get; set; }
+        #endregion Model
+
+    }
 }
 
