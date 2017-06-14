@@ -26,8 +26,8 @@ namespace Leadin.OA.oasystem.oasystem
         /// </summary>
         void BindRepList()
         {
-            repList.DataSource = bll.GetList(0, "", "SortNum desc,Id asc");
-            repList.DataBind();
+            //repList.DataSource = bll.GetList(0, "", "SortNum desc,Id asc");
+            //repList.DataBind();
         }
 
 

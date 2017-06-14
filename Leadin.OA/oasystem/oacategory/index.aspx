@@ -15,6 +15,7 @@
     <title>Amaze UI Admin index Examples</title>
     <meta name="description" content="这是一个 index 页面">
     <uc1:headerlink runat="server" ID="headerlink" />
+
 </head>
 
 <body data-type="generalComponents">
@@ -39,121 +40,21 @@
 
 
 
-                <div class="tpl-portlet-components">
-                    <div class="portlet-title">
-                        <ol class="am-breadcrumb">
-                             <li><a href="/index.aspx" class="am-icon-home">首页</a></li>
-                            <li><a href="/oasystem/oacategory/index.aspx">类别管理</a></li>
-                            <li class="am-active">类别列表</li>
-                        </ol>
+                <div class="ztreebody am-g">
+
+                    <div class="ztreebox am-u-sm-3 am-u-lg-3">
+                        <div class="ibox-title">
+                            <h5>部门列表 <small></small></h5>
+                        </div>
+                        <div class="ibox-content" style="padding: 15px 10px 20px 10px;">
+                            <div class="zTreeDemoBackground">
+                                <ul id="treeDemo" class="ztree"></ul>
+                            </div>
+                        </div>
 
                     </div>
-
-
-                    <div class="tpl-block">
-                        <div class="am-g">
-                            <div class="am-u-sm-12 am-u-md-6">
-                                <div class="am-btn-toolbar">
-                                    <div class="am-btn-group am-btn-group-xs">
-                                        <asp:LinkButton runat="server" ID="lbtnAdd" CssClass="am-btn am-btn-default am-btn-success" OnClick="lbtnAdd_Click"><span class="am-icon-plus"></span> 新增</asp:LinkButton>
-                                        <asp:LinkButton runat="server" ID="lbtnDel" CssClass="am-btn am-btn-default am-btn-danger"><span class="am-icon-plus"></span> 删除</asp:LinkButton>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="am-u-sm-12 am-u-md-3">
-                                <div class="am-form-group">
-                                    <select data-am-selected="{btnSize: 'sm'}">
-                                        <option value="option1">所有类别</option>
-                                        <option value="option2">IT业界</option>
-                                        <option value="option3">数码产品</option>
-                                        <option value="option3">笔记本电脑</option>
-                                        <option value="option3">平板电脑</option>
-                                        <option value="option3">只能手机</option>
-                                        <option value="option3">超极本</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="am-u-sm-12 am-u-md-3">
-                                <div class="am-input-group am-input-group-sm">
-                                    <input type="text" class="am-form-field">
-                                    <span class="am-input-group-btn">
-                                        <%--<button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" type="button"></button>--%>
-                                        <asp:LinkButton runat="server" ID="btnSearch" CssClass="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search" ></asp:LinkButton>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="am-g">
-                            <div class="am-u-sm-12">
-                                <div class="am-form am-scrollable-horizontal">
-                                    <table class="am-table am-table-striped am-table-hover table-main">
-                                        <thead>
-                                            <tr>
-                                                <th class="table-check">
-                                                    <input type="checkbox" id="ckCheckAll" ></th>
-                                                <th class="table-id">索引</th>
-                                                <th class="table-numid">编号</th>
-                                                <th class="table-author">名称</th>
-                                                 <th class="table-author">别名</th>
-                                                <th class="table-author am-hide-sm-only">父类别</th>
-                                                <th class="table-date am-hide-sm-only">状态</th>
-                                                <th class="table-date am-hide-sm-only">排序</th>
-                                                <th class="table-set">操作</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                            <asp:Repeater runat="server" ID="repList">
-                                                <ItemTemplate>
-                                                    <tr>
-                                                        <td>
-                                                            <asp:CheckBox runat="server" ID="ckChecked" />
-
-                                                        </td>
-                                                        <td><%# Eval("Id") %></td>
-                                                        <td><%# Eval("NumId") %></td>
-                                                        <td><a href="edit.aspx?id=<%# Eval("Id") %>"><%# Eval("Title") %></a></td>
-                                                        <td><%# Eval("SubTitle").ToString()==""?"--":Eval("SubTitle").ToString() %></td>
-                                                        <td><%# GetCategoryName(int.Parse(Eval("ParentId").ToString())) %></td>
-                                                        <td class="am-hide-sm-only"><%# Eval("StateInfo").ToString()=="1"?"正常":"禁用" %></td>
-                                                        <td class="am-hide-sm-only"><%#Eval("SortNum") %></td>
-                                                        <td>
-                                                            <div class="am-btn-toolbar">
-                                                                <div class="am-btn-group am-btn-group-xs">
-                                                                    <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-                                                                    <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 复制</button>
-                                                                    <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </ItemTemplate>
-                                            </asp:Repeater>
-
-
-
-
-                                        </tbody>
-                                    </table>
-                                    <div class="am-cf">
-
-                                        <div class="am-fl">
-                                            <ul class="am-pagination tpl-pagination">
-                                                <li class="am-disabled"><a href="#">«</a></li>
-                                                <li class="am-active"><a href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#">4</a></li>
-                                                <li><a href="#">5</a></li>
-                                                <li><a href="#">»</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                </div>
-                            </div>
-
-                        </div>
+                    <div class="ztreedetail am-u-sm-9 am-u-lg-9">
+                          <iframe src="/oasystem/oacategory/detail.aspx" width="100%" style="position:static;left:-22in;top:-11in;" id="DeployBase" name="DeployBase" frameborder="0" scrolling="auto" onload="iFrameHeight()" allowtransparency="true"></iframe>
                     </div>
 
 
@@ -165,15 +66,61 @@
 
         </div>
         <uc1:footerlink runat="server" ID="footerlink" />
+        <script src="/js/jquery.ztree.core-3.5.js"></script>
         <script>
             $(function () {
 
                 setLeftMenu("类别管理", "类别管理")
+                var H = $(window).height();
+                $("#DeployBase").css({ 'height': H - 20 });
 
+                $.post("/Tools/GetCateGoryTree.ashx", {}, function (res) {
+                 
+                        $.fn.zTree.init($("#treeDemo"), setting, res);
+
+
+                }, "json");
+                $('#DeployBase').css('height', '');
             })
 
+
+
+
+            var setting = {
+                check: {
+                    enable: true
+                },
+                data: {
+                    simpleData: {
+                        enable: true
+                    }
+                },
+                callback: {
+                    onCheck: onCheck
+                }
+            };
+
+            function onCheck(e, treeId, treeNode) {
+                var treeObj = $.fn.zTree.getZTreeObj("treeDemo"),
+                    nodes = treeObj.getCheckedNodes(true),
+                    v = "";
+                for (var i = 0; i < nodes.length; i++) {
+                    v += nodes[i].name + ",";
+                    alert(nodes[i].id); //获取选中节点的值
+                }
+
+
+            }
+            function iFrameHeight() {
+                var ifm = document.getElementById("DeployBase");
+                var subWeb = document.frames ? document.frames["DeployBase"].document : ifm.contentDocument;
+                if (ifm != null && subWeb != null) {
+                    ifm.height = subWeb.body.scrollHeight + 0;
+                }
+            }
+
         </script>
-        
+
 
     </form>
 </body>

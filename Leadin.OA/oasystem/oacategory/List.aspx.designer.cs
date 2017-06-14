@@ -7,10 +7,10 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace Leadin.OA.oasystem.oasystem {
+namespace Leadin.OA.oasystem.oacategory {
     
     
-    public partial class index {
+    public partial class List {
         
         /// <summary>
         /// headerlink 控件。
@@ -47,6 +47,33 @@ namespace Leadin.OA.oasystem.oasystem {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::Leadin.OA.Controls.Left Left;
+        
+        /// <summary>
+        /// repCategoryList 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repCategoryList;
+        
+        /// <summary>
+        /// lbtnAdd 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtnAdd;
+        
+        /// <summary>
+        /// lbtnDel 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtnDel;
         
         /// <summary>
         /// footerlink 控件。

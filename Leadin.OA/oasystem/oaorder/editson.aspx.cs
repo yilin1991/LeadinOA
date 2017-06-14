@@ -279,7 +279,7 @@ namespace Leadin.OA.oasystem.oaorder
             DataSet ds = bllSonOrder.GetList(0, "FatherOrderId=" + fathrtId, "NumId desc");
             if (ds.Tables[0].Rows.Count > 0)
             {
-                strNumId.Append(int.Parse(ds.Tables[0].Rows[0]["NumId"].ToString().Split('-')[1]).ToString().PadLeft(3, '0'));
+                strNumId.Append((int.Parse(ds.Tables[0].Rows[0]["NumId"].ToString().Split('-')[1])+1).ToString().PadLeft(3, '0'));
             }
             else
             {

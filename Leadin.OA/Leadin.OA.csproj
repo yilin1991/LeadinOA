@@ -76,7 +76,9 @@
     <Content Include="css\admin.css" />
     <Content Include="css\amazeui.min.css" />
     <Content Include="css\app.css" />
+    <Content Include="css\metroStyle.css" />
     <Content Include="css\style.css" />
+    <Content Include="css\zTreeStyle.css" />
     <Content Include="img\32.jpg" />
     <Content Include="img\43.jpg" />
     <Content Include="img\a1.png" />
@@ -90,7 +92,13 @@
     <Content Include="img\a8.png" />
     <Content Include="img\a9.png" />
     <Content Include="img\lbbg.png" />
+    <Content Include="img\line_conn.gif" />
+    <Content Include="img\line_conn.png" />
+    <Content Include="img\loading.gif" />
     <Content Include="img\logo.png" />
+    <Content Include="img\metro.gif" />
+    <Content Include="img\metro.png" />
+    <Content Include="img\shadow-v.png" />
     <Content Include="img\syncfusion-icons-white.png" />
     <Content Include="img\user01.png" />
     <Content Include="img\user02.png" />
@@ -121,11 +129,18 @@
     <Content Include="js\jquery.hDialog.js" />
     <Content Include="js\jquery.hDialog.min.js" />
     <Content Include="js\jquery.min.js" />
+    <Content Include="js\jquery.ztree.core-3.5.js" />
+    <Content Include="js\jquery.ztree.excheck-3.5.js" />
     <Content Include="js\order.js" />
+    <Content Include="css\sui.nav.min.css" />
+    <Content Include="js\sui.nav.min.js" />
     <Content Include="js\Validform_v5.3.2.js" />
     <Content Include="Login.aspx" />
+    <Content Include="oasystem\oacategory\detail.aspx" />
     <Content Include="oasystem\oacategory\edit.aspx" />
     <Content Include="oasystem\oacategory\index.aspx" />
+    <Content Include="oasystem\oacategory\List.aspx" />
+    <Content Include="oasystem\oacategory\WebForm1.aspx" />
     <Content Include="oasystem\oacustomer\address-edit.aspx" />
     <Content Include="oasystem\oacustomer\address-index.aspx" />
     <Content Include="oasystem\oacustomer\edit.aspx" />
@@ -158,6 +173,8 @@
     <Content Include="Tools\GetAddress.ashx" />
     <Content Include="Tools\GetDelivery.ashx" />
     <Content Include="Tools\CheckOrder.ashx" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Tools\GetCateGoryTree.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -212,6 +229,13 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="oasystem\oacategory\detail.aspx.cs">
+      <DependentUpon>detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oasystem\oacategory\detail.aspx.designer.cs">
+      <DependentUpon>detail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="oasystem\oacategory\edit.aspx.cs">
       <DependentUpon>edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -225,6 +249,20 @@
     </Compile>
     <Compile Include="oasystem\oacategory\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="oasystem\oacategory\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oasystem\oacategory\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="oasystem\oacategory\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oasystem\oacategory\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="oasystem\oacustomer\address-edit.aspx.cs">
       <DependentUpon>address-edit.aspx</DependentUpon>
@@ -385,6 +423,9 @@
     </Compile>
     <Compile Include="Tools\GetAddress.ashx.cs">
       <DependentUpon>GetAddress.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\GetCateGoryTree.ashx.cs">
+      <DependentUpon>GetCateGoryTree.ashx</DependentUpon>
     </Compile>
     <Compile Include="Tools\GetDelivery.ashx.cs">
       <DependentUpon>GetDelivery.ashx</DependentUpon>

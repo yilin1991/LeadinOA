@@ -124,7 +124,7 @@
                                                             <td><%# GetCategoryName(int.Parse(Eval("StateInfo").ToString())) %></td>
                                                              <td><%# Convert.ToDateTime(Eval("AddTime").ToString()).ToString("yyyy-MM-dd") %></td>
                                                             <td>
-                                                                <div class="am-btn-toolbar">
+                                                                <div class="am-btn-toolbar" style="width:150px;">
                                                                     <div class="am-btn-group am-btn-group-xs">
 
 

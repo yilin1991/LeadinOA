@@ -8,7 +8,7 @@
 <script src="/js/echarts.min.js"></script>
 <script src="/js/jquery.hDialog.js"></script>
 <script src="/js/Validform_v5.3.2.js"></script>
-
+<script src="/js/sui.nav.min.js"></script>
 
 
 
