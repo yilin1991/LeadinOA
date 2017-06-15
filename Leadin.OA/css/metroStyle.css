@@ -1,15 +1,7 @@
-/*-------------------------------------
-zTree Style
 
-version:    3.4
-author:     Hunter.z
-email:      hunter.z@263.net
-website:    http://code.google.com/p/jquerytree/
-
--------------------------------------*/
 
 .ztreebody {  
-    padding: 12px 20px 15px;
+    
     margin-top: 0;
     margin-bottom: 25px;
     overflow: hidden;
@@ -17,7 +9,7 @@ website:    http://code.google.com/p/jquerytree/
 
     .ztreebody .ztreebox .ibox-title {
         background-color: #ffffff;
-        border-color: #e7eaec;
+        border-color: #5b9bd1;
         border-image: none;
         border-style: solid solid none;
         border-width: 4px 0px 0;
